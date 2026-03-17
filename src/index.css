@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  --page-padding: clamp(1.25rem, 8vw, 12rem);
+}
+
+@theme {
+  --color-brand: #0360FF;
+  --color-text-primary: #1D1D1D;
+  --color-text-secondary: #5A6272;
+  --color-bg-main: #FAF8F4;
+  --color-btn-bg: #E9E6E0;
+  --color-btn-border: #CAC5BD;
+  --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  @apply bg-bg-main text-text-primary font-sans font-medium antialiased leading-[1.2];
+}
+
+::selection {
+  @apply bg-brand text-white;
+}
