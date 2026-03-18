@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChevronLeft, Monitor, Github } from 'lucide-react';
+import { ChevronLeft, Monitor, Github, Globe, Eye } from 'lucide-react';
 import { Button } from './components/Button';
 import { ShowcaseToggle } from './components/ShowcaseToggle';
 import { motion } from 'motion/react';
@@ -46,6 +46,10 @@ const SectionImage: React.FC<{ src: string, alt: string }> = ({ src, alt }) => (
 const EchooShowcase: React.FC = () => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="bg-[#F6F6F6] min-h-screen w-full">
       <main className="w-full px-5 md:px-0 md:w-[700px] mx-auto text-text-primary pb-32 font-medium">
@@ -70,8 +74,20 @@ const EchooShowcase: React.FC = () => {
           </p>
 
           <div className="flex flex-row gap-4 items-center">
-            <Button text="Visit website" icon={Monitor} />
-            <Button text="View Github" icon={Github} />
+            <button 
+              onClick={() => window.open('https://www.myechoo.xyz/', '_blank', 'noopener,noreferrer')}
+              className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-btn-bg border border-btn-border rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-text-primary leading-none w-fit"
+            >
+              <Monitor className="w-4 h-4 md:w-5 md:h-5 mr-2 text-text-primary shrink-0" />
+              Visit website
+            </button>
+            <button 
+              onClick={() => window.open('https://github.com/nomnom58/untold', '_blank', 'noopener,noreferrer')}
+              className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-btn-bg border border-btn-border rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-text-primary leading-none w-fit"
+            >
+              <Github className="w-4 h-4 md:w-5 md:h-5 mr-2 text-text-primary shrink-0" />
+              View Github
+            </button>
           </div>
         </div>
 
@@ -476,14 +492,66 @@ const EchooShowcase: React.FC = () => {
           <div className="mt-12 h-[1px] bg-[#D3D3D3]" />
 
           {/* CTA Footer Section */}
-          <section className="mt-12 flex flex-col items-start pb-24">
+          <section className="mt-12 flex flex-col items-start pb-12">
             <h2 className="text-[24px] text-[#1D1D1D] font-medium">Now, discover Echoo for yourself</h2>
             <p className="mt-2 text-[20px] leading-[26px] text-[#575757] font-medium">
               Huge thanks to Quan for sharing the story behind Echoo and the details on the building product. Now test it out yourself and see if it's a great fit for you.
             </p>
             <div className="mt-6 flex flex-row gap-4 items-center">
-              <Button text="Visit website" icon={Monitor} />
-              <Button text="View Github" icon={Github} />
+              <button 
+                onClick={() => window.open('https://www.myechoo.xyz/', '_blank', 'noopener,noreferrer')}
+                className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-btn-bg border border-btn-border rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-text-primary leading-none w-fit"
+              >
+                <Monitor className="w-4 h-4 md:w-5 md:h-5 mr-2 text-text-primary shrink-0" />
+                Visit website
+              </button>
+              <button 
+                onClick={() => window.open('https://github.com/nomnom58/untold', '_blank', 'noopener,noreferrer')}
+                className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-btn-bg border border-btn-border rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-text-primary leading-none w-fit"
+              >
+                <Github className="w-4 h-4 md:w-5 md:h-5 mr-2 text-text-primary shrink-0" />
+                View Github
+              </button>
+            </div>
+          </section>
+
+          {/* OTHER PROJECTS LINE STROKE */}
+          <div className="h-[1px] w-full bg-[#D3D3D3] my-12" />
+
+          {/* OTHER PROJECT SECTION */}
+          <section className="flex flex-col items-start pb-24">
+            <h2 className="text-[32px] text-[#0360FF] font-[500] pb-8">Other Project</h2>
+            <div className="w-full">
+              <h3 className="text-[16px] leading-[22px] md:text-[24px] md:leading-[32px] text-[#1D1D1D] font-[500] pb-2">
+                Quan's Portfolio - My Portfolio Website
+              </h3>
+              <p className="text-[16px] leading-[22px] md:text-[20px] md:leading-[26px] text-[#5A6272] font-[500] pb-6">
+                Custom-built high-performance portfolio using React + GSAP, solving complex mobile animation challenges without bloat. Perfect Lighthouse 100/100/100/100 with sub-second load time.
+              </p>
+              
+              <div className="flex flex-col md:flex-row gap-4">
+                <button 
+                  onClick={() => navigate('/showcase/quans-portfolio')}
+                  className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-btn-bg border border-btn-border rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-text-primary leading-none w-full md:w-fit"
+                >
+                  <Eye className="w-4 h-4 md:w-5 md:h-5 mr-2 text-text-primary shrink-0" />
+                  Read showcase
+                </button>
+                <button 
+                  onClick={() => window.open('https://quan-s-port.vercel.app/', '_blank', 'noopener,noreferrer')}
+                  className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-btn-bg border border-btn-border rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-text-primary leading-none w-full md:w-fit"
+                >
+                  <Globe className="w-4 h-4 md:w-5 md:h-5 mr-2 text-text-primary shrink-0" />
+                  Visit Website
+                </button>
+                <button 
+                  onClick={() => window.open('https://github.com/nomnom58/quans-port-2', '_blank', 'noopener,noreferrer')}
+                  className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-btn-bg border border-btn-border rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-text-primary leading-none w-full md:w-fit"
+                >
+                  <Github className="w-4 h-4 md:w-5 md:h-5 mr-2 text-text-primary shrink-0" />
+                  View Github
+                </button>
+              </div>
             </div>
           </section>
         </div>
