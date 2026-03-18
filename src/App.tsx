@@ -196,8 +196,8 @@ function Home() {
                   onClick={() => navigate('/showcase/quans-portfolio')}
                 />
                 <div className="flex gap-2 w-full md:w-auto md:flex-none">
-                  <Button text="Visit website" icon={Monitor} className="flex-1 md:flex-none md:w-auto" />
-                  <Button text="View Github" icon={Github} className="flex-1 md:flex-none md:w-auto" />
+                  <Button text="Visit website" icon={Monitor} className="flex-1 md:flex-none md:w-auto" onClick={() => window.open('https://quans-port-2.vercel.app/', '_blank', 'noopener,noreferrer')} />
+                  <Button text="View Github" icon={Github} className="flex-1 md:flex-none md:w-auto" onClick={() => window.open('https://github.com/nomnom58/quans-port-2', '_blank', 'noopener,noreferrer')} />
                 </div>
               </div>
             </div>
