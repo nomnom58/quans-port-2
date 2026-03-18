@@ -1,12 +1,26 @@
 import { useState, useLayoutEffect } from 'react';
-import { Framer, MousePointer2, Monitor, Smartphone, ArrowRight, Eye, Github, Check, Zap, Copy, ArrowRightToLine, LockKeyhole, DollarSign, Maximize, ChevronsRight, Users } from 'lucide-react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { Framer, MousePointer2, Monitor, Smartphone, ArrowLeft, Eye, Github, Check, Zap, Copy, ArrowRightToLine, LockKeyhole, DollarSign, Maximize, ChevronsRight, Users } from 'lucide-react';
 import { Button } from './components/Button';
+import EchooShowcase from './EchooShowcase';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/showcase/echoo" element={<EchooShowcase />} />
+      </Routes>
+    </Router>
+  );
+}
+
+function Home() {
+  const navigate = useNavigate();
   const [copied, setCopied] = useState(false);
 
   useLayoutEffect(() => {
@@ -135,7 +149,12 @@ export default function App() {
               </div>
 
               <div className="flex flex-col gap-2 mt-[20px] md:mt-[32px] md:flex-row md:items-center md:gap-4">
-                <Button text="Read showcase" icon={Eye} className="w-full md:w-auto" />
+                <Button 
+                  text="Read showcase" 
+                  icon={Eye} 
+                  className="w-full md:w-auto" 
+                  onClick={() => navigate('/showcase/echoo')}
+                />
                 <div className="flex gap-2 w-full md:w-auto md:flex-none">
                   <Button text="Visit website" icon={Monitor} className="flex-1 md:flex-none md:w-auto" />
                   <Button text="View Github" icon={Github} className="flex-1 md:flex-none md:w-auto" />
