@@ -468,26 +468,28 @@ const QuansPortfolio: React.FC = () => {
                     </ShowcaseToggle>
 
                     <ShowcaseToggle title="Cost Structure: $0 Monthly">
-                      <div className="text-[14px] leading-[22px] md:text-[16px] text-[#575757] font-medium">
+                      <div className="text-[14px] leading-[20px] md:text-[16px] md:leading-[22px] text-[#575757] font-[500]">
                         Hosting: Vercel (free tier)
-                        <ul className="list-disc pl-5 mt-2 mb-4">
+                        <ul className="list-disc pl-5 mt-1 mb-2">
                           <li>Unlimited bandwidth</li>
                           <li>Automatic deployments</li>
                           <li>Global CDN</li>
                         </ul>
                         <br />
-                        Database: None (static site) <br />
-                        Domain: Not included in cost calculation (assumed already owned) <br /><br />
+                        Database: None (static site)
+                        <br />
+                        Domain: Not included in cost calculation (assumed already owned)
+                        <br />
                         Total monthly operational cost: $0
                       </div>
                     </ShowcaseToggle>
 
                     <ShowcaseToggle title="What Made This Possible">
-                      <div className="text-[14px] leading-[22px] md:text-[16px] text-[#575757] font-medium">
+                      <div className="text-[14px] leading-[20px] md:text-[16px] md:leading-[22px] text-[#575757] font-[500]">
                         Minimalism: Portfolio doesn't need a database, admin panel, or backend. Static site optimization: Vercel is built for static sites (fast by default). Smart framework choices: React + Vite + Tailwind are all designed for minimal output.
                         <br /><br />
-                        If I'd used Framer:
-                        <ul className="list-disc pl-5 mt-2 mb-4">
+                        If I'd used Framer:<br />
+                        <ul className="list-disc pl-5 mt-1 mb-2">
                           <li>Cost: $12-20/month</li>
                           <li>Load time: 1.5-2 seconds</li>
                           <li>Less control over animations</li>
@@ -508,8 +510,8 @@ const QuansPortfolio: React.FC = () => {
 
           {/* CTA Footer Section */}
           <section className="mt-12 flex flex-col items-start pb-24">
-            <h2 className="text-[24px] text-[#1D1D1D] font-medium">Now, discover quan&apos;s portfolio for yourself</h2>
-            <p className="mt-2 text-[20px] leading-[26px] text-[#575757] font-medium">
+            <h2 className="text-[16px] leading-[22px] md:text-[24px] md:leading-tight text-[#1D1D1D] font-[500]">Now, discover quan&apos;s portfolio for yourself</h2>
+            <p className="mt-2 text-[16px] leading-[22px] md:text-[20px] md:leading-[26px] text-[#575757] font-[500]">
               Huge thanks to Quan for sharing the story behind your portfolio and the details on the building blocks. Now test it out yourself and see if it&apos;s a great fit for you
             </p>
             <div className="mt-6 flex flex-row gap-4 items-center">
