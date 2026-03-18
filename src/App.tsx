@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import { Framer, MousePointer2, Monitor, Smartphone, ArrowLeft, Eye, Github, Check, Zap, Copy, ArrowRightToLine, LockKeyhole, DollarSign, Maximize, ChevronsRight, Users } from 'lucide-react';
 import { Button } from './components/Button';
 import EchooShowcase from './EchooShowcase';
+import QuansPortfolio from './QuansPortfolio';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -14,6 +15,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/showcase/echoo" element={<EchooShowcase />} />
+        <Route path="/showcase/quans-portfolio" element={<QuansPortfolio />} />
       </Routes>
     </Router>
   );
@@ -187,7 +189,12 @@ function Home() {
               </div>
 
               <div className="flex flex-col gap-2 mt-[20px] md:mt-[32px] md:flex-row md:items-center md:gap-4">
-                <Button text="Read showcase" icon={Eye} className="w-full md:w-auto" />
+                <Button 
+                  text="Read showcase" 
+                  icon={Eye} 
+                  className="w-full md:w-auto" 
+                  onClick={() => navigate('/showcase/quans-portfolio')}
+                />
                 <div className="flex gap-2 w-full md:w-auto md:flex-none">
                   <Button text="Visit website" icon={Monitor} className="flex-1 md:flex-none md:w-auto" />
                   <Button text="View Github" icon={Github} className="flex-1 md:flex-none md:w-auto" />
