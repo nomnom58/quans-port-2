@@ -719,6 +719,12 @@ const EchooShowcase: React.FC = () => {
           <section className="flex flex-col items-start pb-24">
             <h2 className="text-[32px] text-[#0360FF] font-[500] pb-8">Other Project</h2>
             <div className="w-full">
+              {/* Ảnh Screenshot Project - Responsive with custom border & radius */}
+              <img 
+                src="/showcase/echoo/port-screenshot.png" 
+                alt="Quan's Portfolio Screenshot" 
+                className="w-full h-auto rounded-2xl border-2 border-[#DAD6CF] mb-6"
+              />
               <h3 className="text-[16px] leading-[22px] md:text-[24px] md:leading-[32px] text-[#1D1D1D] font-[500] pb-2">
                 Quan's Portfolio - My Portfolio Website
               </h3>
