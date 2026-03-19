@@ -43,8 +43,8 @@ const QuansPortfolio: React.FC = () => {
             alt="Quan's Portfolio Logo"
             className="h-[24px] w-auto mb-[12px]"
           />
-          <h1 className="text-[24px] text-[#1D1D1D] mb-[8px]">My portfolio showcase</h1>
-          <p className="text-[20px] text-[#575757] mb-[24px]">
+          <h1 className="text-[20px] md:text-[24px] text-[#1D1D1D] mb-[8px]">My portfolio showcase</h1>
+          <p className="text-[16px] md:text-[20px] leading-[22px] md:leading-[26px] text-[#575757] mb-[24px]">
             My portfolio isn't just a pretty website. It's a filter system optimized for three completely different types of people who will visit it.
           </p>
 
@@ -61,6 +61,18 @@ const QuansPortfolio: React.FC = () => {
               <Github className="w-4 h-4 md:w-5 md:h-5 mr-2 text-text-primary shrink-0" />
               View Github
             </button>
+          </div>
+
+          {/* PORTFOLIO RECORD VIDEO */}
+          <div className="w-full py-[48px]">
+            <video 
+              src="/showcase/quan-portfolio/port-record.webm"
+              autoPlay 
+              loop 
+              muted 
+              playsInline
+              className="w-full max-w-[700px] mx-auto h-auto rounded-[16px] shadow-sm"
+            />
           </div>
         </div>
 
@@ -551,16 +563,22 @@ const QuansPortfolio: React.FC = () => {
 
           {/* OTHER PROJECT SECTION */}
           <section className="flex flex-col items-start pb-24">
-            <h2 className="text-[32px] text-[#0360FF] font-[500] pb-8">Other Project</h2>
+            <h2 className="text-[24px] md:text-[32px] text-[#0360FF] font-[500] pb-8">Other Project</h2>
             <div className="w-full">
-              <h3 className="text-[16px] leading-[22px] md:text-[24px] md:leading-[32px] text-[#1D1D1D] font-[500] pb-2">
+              {/* Ảnh Minh họa Dự án Echoo */}
+              <img 
+                src="/showcase/quan-portfolio/echoo-screenshot.png" 
+                alt="Echoo App Showcase" 
+                className="w-full max-w-[700px] h-auto rounded-[16px] border-[2px] border-[#DAD6CF] mb-[24px] object-cover"
+              />
+              <h3 className="text-[20px] md:text-[24px] md:leading-[32px] text-[#1D1D1D] font-[500] pb-2">
                 Echoo App - Anonymous Confession Platform
               </h3>
               <p className="text-[16px] leading-[22px] md:text-[20px] md:leading-[26px] text-[#5A6272] font-[500] pb-6">
                 Solo-built anonymous confessional app end-to-end: product strategy, UI/UX design, full-stack engineering, marketing. Positioned as emotional outlet platform (vs. drama forum paradigm).
               </p>
               
-              <div className="flex flex-col md:flex-row gap-4">
+              <div className="flex flex-col md:flex-row gap-2 md:gap-4">
                 <button 
                   onClick={() => navigate('/showcase/echoo')}
                   className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-btn-bg border border-btn-border rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-text-primary leading-none w-full md:w-fit"
@@ -568,20 +586,22 @@ const QuansPortfolio: React.FC = () => {
                   <Eye className="w-4 h-4 md:w-5 md:h-5 mr-2 text-text-primary shrink-0" />
                   Read showcase
                 </button>
-                <button 
-                  onClick={() => window.open('https://www.myechoo.xyz/', '_blank')}
-                  className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-btn-bg border border-btn-border rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-text-primary leading-none w-full md:w-fit"
-                >
-                  <Globe className="w-4 h-4 md:w-5 md:h-5 mr-2 text-text-primary shrink-0" />
-                  Visit Website
-                </button>
-                <button 
-                  onClick={() => window.open('https://github.com/nomnom58/untold', '_blank', 'noopener,noreferrer')}
-                  className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-btn-bg border border-btn-border rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-text-primary leading-none w-full md:w-fit"
-                >
-                  <Github className="w-4 h-4 md:w-5 md:h-5 mr-2 text-text-primary shrink-0" />
-                  View Github
-                </button>
+                <div className="grid grid-cols-2 md:flex md:gap-4 gap-2">
+                  <button 
+                    onClick={() => window.open('https://www.myechoo.xyz/', '_blank')}
+                    className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-btn-bg border border-btn-border rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-text-primary leading-none w-full md:w-fit"
+                  >
+                    <Globe className="w-4 h-4 md:w-5 md:h-5 mr-2 text-text-primary shrink-0" />
+                    Visit Website
+                  </button>
+                  <button 
+                    onClick={() => window.open('https://github.com/nomnom58/untold', '_blank', 'noopener,noreferrer')}
+                    className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-btn-bg border border-btn-border rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-text-primary leading-none w-full md:w-fit"
+                  >
+                    <Github className="w-4 h-4 md:w-5 md:h-5 mr-2 text-text-primary shrink-0" />
+                    View Github
+                  </button>
+                </div>
               </div>
             </div>
           </section>
