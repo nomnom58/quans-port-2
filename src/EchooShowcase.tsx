@@ -136,13 +136,13 @@ const EchooShowcase: React.FC = () => {
             />
           </div>
 
-          {/* 3. Title: Laptop 24px, Mobile 20px, Medium 500, mb-2 */}
-          <h1 className="text-[20px] md:text-[24px] font-medium leading-tight text-text-primary mb-2">
+          {/* 3. Title: Laptop 24px, Mobile 20px, Medium 500 */}
+          <h1 className="text-[20px] md:text-[24px] font-medium leading-tight text-text-primary">
             Echoo App — Anonymous Confession Platform
           </h1>
 
-          {/* 4. Subtitle: Laptop 20px, Mobile 16px, LH 22px */}
-          <p className="text-[16px] md:text-[20px] leading-[22px] text-text-secondary">
+          {/* 4. Subtitle: Laptop 20px, Mobile 16px, LH 26px, cách Title 8px (mt-2) */}
+          <p className="text-[16px] md:text-[20px] leading-[26px] text-text-secondary mt-2">
             Echoo is a confessional app for people aged 16-35 who want to share secrets anonymously but safely. 
             Echoo isn't a "drama forum" like Reddit/Whisper. It's an "emotional outlet" - share, feel lighter, move on.
           </p>
