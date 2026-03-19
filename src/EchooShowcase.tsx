@@ -43,42 +43,123 @@ const SectionImage: React.FC<{ src: string, alt: string }> = ({ src, alt }) => (
   </motion.div>
 );
 
+const BackToHomeButton: React.FC = () => {
+  const navigate = useNavigate();
+  return (
+    <button
+      onClick={() => navigate('/')}
+      className="group flex items-center gap-2 text-[#5A6272] hover:text-[#1D1D1D] transition-colors text-[20px]"
+    >
+      <ChevronLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
+      Back to home
+    </button>
+  );
+};
+
 const EchooShowcase: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    // Logic cho thanh slider thumb chạy theo khi scroll
+    const container = document.getElementById('hero-images-container');
+    const thumb = document.getElementById('hero-slider-thumb');
+    const sliderBar = document.getElementById('hero-slider-bar');
+
+    if (container && thumb && sliderBar) {
+      const handleScroll = () => {
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        if (maxScroll <= 0) return;
+        
+        const scrollPercentage = container.scrollLeft / maxScroll;
+        const maxTranslate = sliderBar.clientWidth - thumb.clientWidth;
+        const translateValue = scrollPercentage * maxTranslate;
+        
+        thumb.style.transform = `translateX(${translateValue}px)`;
+      };
+
+      // Ẩn slider nếu không có nội dung để cuộn
+      const checkScrollable = () => {
+        if (container.scrollWidth <= container.clientWidth) {
+          sliderBar.style.display = 'none';
+        } else {
+          sliderBar.style.display = 'block';
+        }
+      };
+
+      container.addEventListener('scroll', handleScroll, { passive: true });
+      window.addEventListener('resize', checkScrollable);
+      
+      // Initial checks
+      checkScrollable();
+      handleScroll();
+
+      return () => {
+        container.removeEventListener('scroll', handleScroll);
+        window.removeEventListener('resize', checkScrollable);
+      };
+    }
   }, []);
 
   return (
     <div className="bg-[#F6F6F6] min-h-screen w-full">
-      <main className="w-full text-text-primary pb-32 font-medium">
-
-
-        {/* Bắt đầu khối nội dung chính 700px (Nút Back, Hero, v.v.) */}
-        <div className="w-full max-w-[700px] mx-auto px-6">
-
-        {/* Top Section */}
-        <div className="pt-8 md:pt-12 flex flex-col items-start">
-          <button
-            onClick={() => navigate('/')}
-            className="group flex items-center gap-2 text-[#5A6272] hover:text-[#1D1D1D] transition-colors text-[20px] mb-[24px]"
+      <main className="w-full text-text-primary pb-32 font-medium bg-[#F6F6F6]">
+        {/* --- 1. HERO SECTION: THÔNG MINH & GỌN GÀNG --- */}
+        <section className="w-full pt-12 relative group"> 
+          {/* Container Ảnh: Tự động căn giữa (center) nếu đủ chỗ, căn trái (start) nếu thiếu */}
+          <div 
+            id="hero-images-container"
+            className="flex md:justify-center justify-start px-6 md:px-12 gap-4 overflow-x-auto scrollbar-hide flex-nowrap select-none"
+            style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)' }}
           >
-            <ChevronLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
-            Back to home
-          </button>
+            <div className="flex gap-4 flex-nowrap py-4">
+              <img src="/showcase/echoo/Echoo1.png" style={{ width: '666px', height: '442px', minWidth: '666px' }} className="flex-none rounded-2xl shadow-sm bg-white" alt="Echoo 1" />
+              <img src="/showcase/echoo/Echoo2.png" style={{ width: '666px', height: '442px', minWidth: '666px' }} className="flex-none rounded-2xl shadow-sm bg-white" alt="Echoo 2" />
+            </div>
+          </div>
 
-          <img
-            src="/showcase/echoo/echoo_logo.png"
-            alt="Echoo Logo"
-            className="h-[24px] mb-[12px]"
-          />
-          <h1 className="text-[24px] text-[#1D1D1D] mb-[8px]">Anonymous Confession Platform</h1>
-          <p className="text-[20px] text-[#5A6272] mb-[24px]">
-            Echoo is a confessional app for people aged 16-35 who want to share secrets anonymously but safely. Echoo isn't a "drama forum" like Reddit/Whisper. It's an "emotional outlet" - share, feel lighter, move on.
+          {/* 2. SLIDER 8PX: Nằm đè lên trên ảnh (absolute), cách đáy ảnh 12px, cao đúng 8px */}
+          <div 
+            className="absolute bottom-[28px] left-1/2 -translate-x-1/2 w-[200px] h-[8px] bg-black/10 rounded-full z-10 pointer-events-auto overflow-hidden md:hidden lg:hidden"
+            id="hero-slider-bar"
+          >
+            {/* Thumb của slider - sẽ chạy theo scroll */}
+            <div 
+              id="hero-slider-thumb"
+              className="h-full bg-black/40 rounded-full w-1/3 transition-transform duration-75 ease-out"
+            />
+          </div>
+        </section>
+
+        {/* --- 2. GRID NỘI DUNG 700PX: NỐI LIỀN MẠCH --- */}
+        <div className="max-w-[700px] mx-auto px-6 w-full mt-6">
+          {/* 1. Nút Back to home */}
+          <div className="mb-6">
+            <BackToHomeButton />
+          </div>
+
+          {/* 2. Logo: Height 24px, Width Auto, mb-4 = 16px gap xuống title */}
+          <div className="mb-4">
+            <img 
+              src="/showcase/echoo/echoo_logo.png" 
+              alt="Echoo Logo" 
+              className="h-[24px] w-auto object-contain" 
+            />
+          </div>
+
+          {/* 3. Title: Laptop 24px, Mobile 20px, Medium 500 */}
+          <h1 className="text-[20px] md:text-[24px] font-medium text-text-primary leading-tight">
+            Echoo App — Anonymous Confession Platform
+          </h1>
+
+          {/* 4. Subtitle: Laptop 20px, Mobile 16px, LH 22px, cách Title 8px (mt-2) */}
+          <p className="text-[16px] md:text-[20px] leading-[22px] text-text-secondary mt-2">
+            Echoo is a confessional app for people aged 16-35 who want to share secrets anonymously but safely. 
+            Echoo isn't a "drama forum" like Reddit/Whisper. It's an "emotional outlet" - share, feel lighter, move on.
           </p>
-
-          <div className="flex flex-row gap-4 items-center">
+          
+          <div className="flex gap-3 mt-8">
             <button 
               onClick={() => window.open('https://www.myechoo.xyz/', '_blank', 'noopener,noreferrer')}
               className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-btn-bg border border-btn-border rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-text-primary leading-none w-fit"
@@ -94,18 +175,17 @@ const EchooShowcase: React.FC = () => {
               View Github
             </button>
           </div>
-        </div>
 
-        {/* Video Demo Section */}
-        <video 
-          src="/showcase/echoo/echoo-record.mp4" 
-          autoPlay loop muted playsInline 
-          className="w-full h-auto mt-12 mb-12 block rounded-[24px] shadow-[0_0_0_8px_#DAD6CF]" 
-        />
 
-        <div>
+          <video 
+            src="/showcase/echoo/echoo-record.mp4" 
+            autoPlay loop muted playsInline 
+            className="w-full h-auto mt-12 mb-12 block shadow-[0_0_0_8px_#DAD6CF]" 
+            style={{ borderRadius: '0px' }} 
+          />
 
-          {/* THE STRATEGY SECTION */}
+
+        {/* THE STRATEGY SECTION */}
           <section>
             <FadeIn>
               <h2 className="text-[16px] md:text-[20px] text-[#1D1D1D] mb-[16px] underline font-medium">The Strategy</h2>
@@ -684,9 +764,8 @@ const EchooShowcase: React.FC = () => {
             </div>
           </section>
         </div>
-      </div>
-    </main>
-  </div>
+      </main>
+    </div>
   );
 };
 
