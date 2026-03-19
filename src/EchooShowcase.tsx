@@ -52,7 +52,12 @@ const EchooShowcase: React.FC = () => {
 
   return (
     <div className="bg-[#F6F6F6] min-h-screen w-full">
-      <main className="w-full px-5 md:px-0 md:w-[700px] mx-auto text-text-primary pb-32 font-medium">
+      <main className="w-full text-text-primary pb-32 font-medium">
+
+
+        {/* Bắt đầu khối nội dung chính 700px (Nút Back, Hero, v.v.) */}
+        <div className="w-full max-w-[700px] mx-auto px-6">
+
         {/* Top Section */}
         <div className="pt-8 md:pt-12 flex flex-col items-start">
           <button
@@ -91,9 +96,14 @@ const EchooShowcase: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-12 md:mt-24">
+        {/* Video Demo Section */}
+        <video 
+          src="/showcase/echoo/echoo-record.mp4" 
+          autoPlay loop muted playsInline 
+          className="w-full h-auto mt-12 mb-12 block rounded-[24px] shadow-[0_0_0_8px_#DAD6CF]" 
+        />
 
-
+        <div>
 
           {/* THE STRATEGY SECTION */}
           <section>
@@ -674,8 +684,9 @@ const EchooShowcase: React.FC = () => {
             </div>
           </section>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
+  </div>
   );
 };
 
