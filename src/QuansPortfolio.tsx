@@ -50,12 +50,14 @@ const QuansPortfolio: React.FC = () => {
 
           <div className="flex flex-row gap-4 items-center">
             <button 
+              onClick={() => window.open('https://quans-port-2.vercel.app/', '_blank', 'noopener,noreferrer')}
               className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-btn-bg border border-btn-border rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-text-primary leading-none w-fit"
             >
               <Monitor className="w-4 h-4 md:w-5 md:h-5 mr-2 text-text-primary shrink-0" />
               Visit website
             </button>
             <button 
+              onClick={() => window.open('https://github.com/nomnom58/quans-port-2', '_blank', 'noopener,noreferrer')}
               className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-btn-bg border border-btn-border rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-text-primary leading-none w-fit"
             >
               <Github className="w-4 h-4 md:w-5 md:h-5 mr-2 text-text-primary shrink-0" />
@@ -542,14 +544,14 @@ const QuansPortfolio: React.FC = () => {
             </p>
             <div className="mt-6 flex flex-row gap-4 items-center">
               <button 
-                onClick={() => window.open('https://quan.hoang.space/', '_blank')}
+                onClick={() => window.open('https://quans-port-2.vercel.app/', '_blank', 'noopener,noreferrer')}
                 className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-btn-bg border border-btn-border rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-text-primary leading-none w-fit"
               >
                 <Monitor className="w-4 h-4 md:w-5 md:h-5 mr-2 text-text-primary shrink-0" />
                 Visit website
               </button>
               <button 
-                onClick={() => {}}
+                onClick={() => window.open('https://github.com/nomnom58/quans-port-2', '_blank', 'noopener,noreferrer')}
                 className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-btn-bg border border-btn-border rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-text-primary leading-none w-fit"
               >
                 <Github className="w-4 h-4 md:w-5 md:h-5 mr-2 text-text-primary shrink-0" />
