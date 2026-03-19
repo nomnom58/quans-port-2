@@ -398,6 +398,20 @@ const QuansPortfolio: React.FC = () => {
                     <br/><br/>
                     The lesson: The tool doesn't matter. How you use it does.
                   </div>
+
+                  {/* Lighthouse Proof Image */}
+                  <div className="my-[16px] w-full">
+                    <img 
+                      src="/showcase/quan-portfolio/lighthouse-portfolio.png" 
+                      alt="Lighthouse Score 100 Desktop and 95 Mobile"
+                      className="w-full h-auto rounded-[16px] border border-black/5 shadow-sm"
+                    />
+                  </div>
+
+                  <div className="text-[14px] text-[#575757]/60 mb-2 font-medium">
+                    Click to see more technical details ↓
+                  </div>
+
                   <div className="space-y-2">
                     <ShowcaseToggle title="Lazy Loading: Don't Load What You Don't See">
                       <div className="text-[14px] leading-[22px] md:text-[16px] text-[#575757] font-medium">
