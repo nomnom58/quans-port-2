@@ -11,45 +11,46 @@ const TransitionWrapper = ({ children }: { children: React.ReactNode }) => {
 
         const length = svgPathRef.current.getTotalLength();
         
-        // 1. THIẾT LẬP: Nội dung bên dưới hiện ngay, chỉ có đường line xanh đè lên
+        // --- SETUP TỨC THÌ ---
+        // Nội dung bên dưới hiện ngay, dải lụa xanh pastel đè lên
         gsap.set(svgPathRef.current, {
             strokeDasharray: length,
             strokeDashoffset: 0,
-            strokeWidth: 300, // Độ dày 300 che phủ "mờ ảo" nội dung bên dưới
+            strokeWidth: 300, 
             opacity: 1
         });
 
-        // Overlay trong suốt hoàn toàn, không có màu nền trắng
+        // Lớp bọc trong suốt để lộ Logo/Hero bên dưới
         gsap.set(transitionOverlayRef.current, { 
             opacity: 1,
             backgroundColor: 'transparent' 
         });
 
-        // 2. ANIMATION: Vén dải lụa đi (Không delay, chạy ngay lập tức)
+        // --- ANIMATION VÉN MÀN (4.0s) ---
         const tl = gsap.timeline();
 
         tl.to(svgPathRef.current, {
             strokeDashoffset: -length, 
             strokeWidth: 2,           
-            duration: 4.5,            // 4.5 giây để cảm nhận được sự chuyển động
-            ease: "power2.out",       // Vọt đi ngay khi vừa F5
+            duration: 4.0,            // Giữ 4 giây theo ý Quân
+            ease: "power2.out",       // Chạy ngay lập tức không chờ đợi
         })
         .to(transitionOverlayRef.current, {
             opacity: 0,
-            duration: 1.0,
+            duration: 0.8,
             onComplete: () => {
-                // Thu dọn để không cản trở tương tác chuột
+                // Thu dọn để không chặn click chuột vào nội dung
                 if (transitionOverlayRef.current) {
                     transitionOverlayRef.current.style.display = 'none';
                 }
             }
-        }, "-=1.0");
+        }, "-=0.8");
 
     }, [])
 
     return (
         <>
-            {/* Lớp Overlay trong suốt - Chỉ chứa SVG */}
+            {/* Overlay dải lụa xanh Pastel #809FF3 */}
             <div 
                 ref={transitionOverlayRef} 
                 className='fixed inset-0 z-[10000] flex items-center justify-center pointer-events-none bg-transparent'
@@ -66,14 +67,14 @@ const TransitionWrapper = ({ children }: { children: React.ReactNode }) => {
                     <path
                         ref={svgPathRef}
                         d="M13.4746 291.27C13.4746 291.27 100.646 -18.6724 255.617 16.8418C410.588 52.356 61.0296 431.197 233.017 546.326C431.659 679.299 444.494 21.0125 652.73 100.784C860.967 180.556 468.663 430.709 617.216 546.326C765.769 661.944 819.097 48.2722 988.501 120.156C1174.21 198.957 809.424 543.841 988.501 636.726C1189.37 740.915 1301.67 149.213 1301.67 149.213"
-                        stroke="#82A0FF"
+                        stroke="#809FF3" // ĐỔI LẠI MÀU CŨ PASTEL TẠI ĐÂY
                         strokeLinecap="round"
                         strokeLinejoin="round"
                     />
                 </svg>
             </div>
 
-            {/* Nội dung chính - Luôn hiện sẵn, không bị che bởi nền trắng */}
+            {/* Nội dung Portfolio - Luôn ở đó từ giây đầu tiên */}
             <div className="relative z-0">
                 {children}
             </div>
