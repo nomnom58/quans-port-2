@@ -11,46 +11,48 @@ const TransitionWrapper = ({ children }: { children: React.ReactNode }) => {
 
         const length = svgPathRef.current.getTotalLength();
         
-        // --- KHỞI TẠO TỨC THÌ ---
-        // Hiện màn hình trắng che phủ ngay lập tức
-        transitionOverlayRef.current.style.opacity = '1';
-        
+        // 1. THIẾT LẬP: Nội dung bên dưới hiện ngay, chỉ có đường line xanh đè lên
         gsap.set(svgPathRef.current, {
             strokeDasharray: length,
             strokeDashoffset: 0,
-            strokeWidth: 300, // Quay lại độ dày 300 theo ý Quân
+            strokeWidth: 300, // Độ dày 300 che phủ "mờ ảo" nội dung bên dưới
             opacity: 1
         });
 
-        // --- ANIMATION CHẠY KHÔNG DELAY ---
+        // Overlay trong suốt hoàn toàn, không có màu nền trắng
+        gsap.set(transitionOverlayRef.current, { 
+            opacity: 1,
+            backgroundColor: 'transparent' 
+        });
+
+        // 2. ANIMATION: Vén dải lụa đi (Không delay, chạy ngay lập tức)
         const tl = gsap.timeline();
 
         tl.to(svgPathRef.current, {
             strokeDashoffset: -length, 
             strokeWidth: 2,           
-            duration: 5.0,            // Chạy thong thả trong 5 giây
-            ease: "power2.out",       // Vọt đi ngay lập tức khi vừa load
+            duration: 4.5,            // 4.5 giây để cảm nhận được sự chuyển động
+            ease: "power2.out",       // Vọt đi ngay khi vừa F5
         })
         .to(transitionOverlayRef.current, {
             opacity: 0,
             duration: 1.0,
-            ease: "power2.inOut",
             onComplete: () => {
-                // Thu dọn chiến trường để không cản trở click chuột
+                // Thu dọn để không cản trở tương tác chuột
                 if (transitionOverlayRef.current) {
                     transitionOverlayRef.current.style.display = 'none';
                 }
             }
-        }, "-=1.0"); // Mờ dần trong 1 giây cuối cùng của quá trình vẽ
+        }, "-=1.0");
 
     }, [])
 
     return (
         <>
-            {/* Lớp Overlay Intro */}
+            {/* Lớp Overlay trong suốt - Chỉ chứa SVG */}
             <div 
                 ref={transitionOverlayRef} 
-                className='fixed inset-0 z-[10000] flex items-center justify-center bg-white pointer-events-none'
+                className='fixed inset-0 z-[10000] flex items-center justify-center pointer-events-none bg-transparent'
             >
                 <svg
                     width="100%"
@@ -71,8 +73,8 @@ const TransitionWrapper = ({ children }: { children: React.ReactNode }) => {
                 </svg>
             </div>
 
-            {/* Nội dung Portfolio */}
-            <div className="relative">
+            {/* Nội dung chính - Luôn hiện sẵn, không bị che bởi nền trắng */}
+            <div className="relative z-0">
                 {children}
             </div>
         </>
