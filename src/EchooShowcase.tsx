@@ -141,8 +141,8 @@ const EchooShowcase: React.FC = () => {
             Echoo App — Anonymous Confession Platform
           </h1>
 
-          {/* 4. Subtitle: Laptop 20px, Mobile 16px, LH 26px, cách Title 8px (mt-2) */}
-          <p className="text-[16px] md:text-[20px] leading-[26px] text-text-secondary mt-2">
+          {/* 4. Subtitle: Laptop 20px, Mobile 16px, LH Responsive */}
+          <p className="text-[16px] md:text-[20px] leading-[22px] md:leading-[26px] text-text-secondary mt-2">
             Echoo is a confessional app for people aged 16-35 who want to share secrets anonymously but safely. 
             Echoo isn't a "drama forum" like Reddit/Whisper. It's an "emotional outlet" - share, feel lighter, move on.
           </p>
@@ -690,8 +690,8 @@ const EchooShowcase: React.FC = () => {
 
           {/* CTA Footer Section */}
           <section className="mt-12 flex flex-col items-start pb-12">
-            <h2 className="text-[24px] text-[#1D1D1D] font-medium">Now, discover Echoo for yourself</h2>
-            <p className="mt-2 text-[20px] leading-[26px] text-[#575757] font-medium">
+            <h2 className="text-[20px] md:text-[24px] text-[#1D1D1D] font-medium">Now, discover Echoo for yourself</h2>
+            <p className="mt-2 text-[16px] md:text-[20px] leading-[22px] md:leading-[26px] text-[#575757] font-medium">
               Huge thanks to Quan for sharing the story behind Echoo and the details on the building product. Now test it out yourself and see if it's a great fit for you.
             </p>
             <div className="mt-6 flex flex-row gap-4 items-center">

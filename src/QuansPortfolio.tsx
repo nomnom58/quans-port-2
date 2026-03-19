@@ -536,7 +536,7 @@ const QuansPortfolio: React.FC = () => {
 
           {/* CTA Footer Section */}
           <section className="mt-12 flex flex-col items-start pb-12">
-            <h2 className="text-[16px] leading-[22px] md:text-[24px] md:leading-tight text-[#1D1D1D] font-[500]">Now, discover quan&apos;s portfolio for yourself</h2>
+            <h2 className="text-[20px] md:text-[24px] md:leading-tight text-[#1D1D1D] font-[500]">Now, discover quan&apos;s portfolio for yourself</h2>
             <p className="mt-2 text-[16px] leading-[22px] md:text-[20px] md:leading-[26px] text-[#575757] font-[500]">
               Huge thanks to Quan for sharing the story behind your portfolio and the details on the building blocks. Now test it out yourself and see if it&apos;s a great fit for you
             </p>
