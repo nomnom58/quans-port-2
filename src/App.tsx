@@ -9,15 +9,19 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+import TransitionWrapper from './components/pagetransition/TransitionWrapper';
+
 export default function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/showcase/echoo" element={<EchooShowcase />} />
-        <Route path="/showcase/quans-portfolio" element={<QuansPortfolio />} />
-      </Routes>
-    </Router>
+    <TransitionWrapper>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/showcase/echoo" element={<EchooShowcase />} />
+          <Route path="/showcase/quans-portfolio" element={<QuansPortfolio />} />
+        </Routes>
+      </Router>
+    </TransitionWrapper>
   );
 }
 
