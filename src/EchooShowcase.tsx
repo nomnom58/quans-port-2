@@ -4,7 +4,7 @@ import { ChevronLeft, Monitor, Github, Globe, Eye } from 'lucide-react';
 import { Button } from './components/Button';
 import { ShowcaseToggle } from './components/ShowcaseToggle';
 import { motion } from 'motion/react';
-import MaintenanceTooltip from './components/ui/MaintenanceTooltip';
+
 
 // Danh sách các ảnh trong thư mục /public/showcase/echoo/
 // Bạn có thể sửa tên file trong mảng này cho phù hợp với thực tế.
@@ -149,12 +149,13 @@ const EchooShowcase: React.FC = () => {
           </p>
           
           <div className="flex gap-3 mt-8">
-            <MaintenanceTooltip>
-              <div className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-[#E9E6E0] border border-[#CAC5BD] rounded-[12px] md:rounded-[16px] transition-all opacity-50 pointer-events-none text-[16px] md:text-[20px] font-[500] text-[#1D1D1D] leading-none w-fit">
-                <Monitor className="w-4 h-4 md:w-5 md:h-5 mr-2 text-[#1D1D1D] shrink-0" />
-                Visit website
-              </div>
-            </MaintenanceTooltip>
+            <button
+              onClick={() => window.open('https://www.myechoo.xyz/', '_blank', 'noopener,noreferrer')}
+              className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-[#E9E6E0] border border-[#CAC5BD] rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-[#1D1D1D] leading-none w-fit"
+            >
+              <Monitor className="w-4 h-4 md:w-5 md:h-5 mr-2 text-[#1D1D1D] shrink-0" />
+              Visit website
+            </button>
             <button 
               onClick={() => window.open('https://github.com/nomnom58/untold', '_blank', 'noopener,noreferrer')}
               className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-btn-bg border border-btn-border rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-text-primary leading-none w-fit"
@@ -695,12 +696,13 @@ const EchooShowcase: React.FC = () => {
               Huge thanks to Quan for sharing the story behind Echoo and the details on the building product. Now test it out yourself and see if it's a great fit for you.
             </p>
             <div className="mt-6 flex flex-row gap-4 items-center">
-              <MaintenanceTooltip>
-                <div className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-[#E9E6E0] border border-[#CAC5BD] rounded-[12px] md:rounded-[16px] transition-all opacity-50 pointer-events-none text-[16px] md:text-[20px] font-[500] text-[#1D1D1D] leading-none w-fit">
-                  <Monitor className="w-4 h-4 md:w-5 md:h-5 mr-2 text-[#1D1D1D] shrink-0" />
-                  Visit website
-                </div>
-              </MaintenanceTooltip>
+              <button
+                onClick={() => window.open('https://www.myechoo.xyz/', '_blank', 'noopener,noreferrer')}
+                className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-[#E9E6E0] border border-[#CAC5BD] rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-[#1D1D1D] leading-none w-fit"
+              >
+                <Monitor className="w-4 h-4 md:w-5 md:h-5 mr-2 text-[#1D1D1D] shrink-0" />
+                Visit website
+              </button>
               <button 
                 onClick={() => window.open('https://github.com/nomnom58/untold', '_blank', 'noopener,noreferrer')}
                 className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-btn-bg border border-btn-border rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-text-primary leading-none w-fit"

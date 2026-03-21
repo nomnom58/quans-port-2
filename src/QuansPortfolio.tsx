@@ -4,7 +4,7 @@ import { ChevronLeft, Monitor, Github, Globe, Eye } from 'lucide-react';
 import { Button } from './components/Button';
 import { ShowcaseToggle } from './components/ShowcaseToggle';
 import { motion } from 'motion/react';
-import MaintenanceTooltip from './components/ui/MaintenanceTooltip';
+
 
 // Sub-component cho các khối cần animation khi cuộn
 const FadeIn: React.FC<{ children: React.ReactNode, delay?: number, className?: string }> = ({ children, delay = 0, className = "" }) => (
@@ -604,12 +604,13 @@ const QuansPortfolio: React.FC = () => {
                   Read showcase
                 </button>
                 <div className="grid grid-cols-2 md:flex md:gap-4 gap-2">
-                  <MaintenanceTooltip>
-                    <div className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-[#E9E6E0] border border-[#CAC5BD] rounded-[12px] md:rounded-[16px] transition-all opacity-50 pointer-events-none text-[16px] md:text-[20px] font-[500] text-[#1D1D1D] leading-none w-full md:w-fit">
-                      <Globe className="w-4 h-4 md:w-5 md:h-5 mr-2 text-[#1D1D1D] shrink-0" />
-                      Visit Website
-                    </div>
-                  </MaintenanceTooltip>
+                  <button
+                    onClick={() => window.open('https://www.myechoo.xyz/', '_blank', 'noopener,noreferrer')}
+                    className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-[#E9E6E0] border border-[#CAC5BD] rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-[#1D1D1D] leading-none w-full md:w-fit"
+                  >
+                    <Globe className="w-4 h-4 md:w-5 md:h-5 mr-2 text-[#1D1D1D] shrink-0" />
+                    Visit Website
+                  </button>
                   <button 
                     onClick={() => window.open('https://github.com/nomnom58/untold', '_blank', 'noopener,noreferrer')}
                     className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-btn-bg border border-btn-border rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-text-primary leading-none w-full md:w-fit"

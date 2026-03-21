@@ -10,7 +10,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 import TransitionWrapper from './components/pagetransition/TransitionWrapper';
-import MaintenanceTooltip from './components/ui/MaintenanceTooltip';
+
 
 export default function App() {
   return (
@@ -163,14 +163,12 @@ function Home() {
                   onClick={() => navigate('/showcase/echoo')}
                 />
                 <div className="flex gap-2 w-full md:w-auto md:flex-none">
-                  <MaintenanceTooltip>
-                    <Button 
-                      text="Visit Website" 
-                      icon={Monitor} 
-                      disabled 
-                      className="flex-1 md:flex-none md:w-auto"
-                    />
-                  </MaintenanceTooltip>
+                  <Button 
+                    text="Visit Website" 
+                    icon={Monitor} 
+                    className="flex-1 md:flex-none md:w-auto"
+                    onClick={() => window.open('https://www.myechoo.xyz/', '_blank', 'noopener,noreferrer')}
+                  />
                   <Button text="View Github" icon={Github} className="flex-1 md:flex-none md:w-auto" onClick={() => window.open('https://github.com/nomnom58/untold', '_blank', 'noopener,noreferrer')} />
                 </div>
               </div>
