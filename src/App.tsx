@@ -4,6 +4,7 @@ import { Framer, MousePointer2, Monitor, Smartphone, ArrowLeft, Eye, Github, Che
 import { Button } from './components/Button';
 import EchooShowcase from './EchooShowcase';
 import QuansPortfolio from './QuansPortfolio';
+import HomeV2 from './HomeV2';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -18,6 +19,7 @@ export default function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/v2" element={<HomeV2 />} />
           <Route path="/showcase/echoo" element={<EchooShowcase />} />
           <Route path="/showcase/quans-portfolio" element={<QuansPortfolio />} />
         </Routes>

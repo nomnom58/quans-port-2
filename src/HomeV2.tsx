@@ -1,0 +1,296 @@
+import { useState, useRef } from 'react';
+import { Mail, Instagram, ArrowLeft, ArrowRight } from 'lucide-react';
+
+export default function HomeV2() {
+  const [activeTab, setActiveTab] = useState<'project' | 'cv'>('project');
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const [showMailTooltip, setShowMailTooltip] = useState(false);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const email = "tranmanhquan.ptit@gmail.com";
+
+  // --- Carousel Logic ---
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!carouselRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - carouselRef.current.offsetLeft);
+    setScrollLeft(carouselRef.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => setIsDragging(false);
+  const handleMouseUp = () => setIsDragging(false);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !carouselRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - carouselRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    carouselRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (carouselRef.current) {
+      const scrollAmount = direction === 'left' ? -348 : 348;
+      carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  const handleCopyMail = () => {
+    navigator.clipboard.writeText(email);
+    setShowMailTooltip(true);
+    setTimeout(() => setShowMailTooltip(false), 2000);
+  };
+
+  return (
+    <div className="min-h-screen bg-[#FFFFFA] text-[#000000] font-sans selection:bg-black selection:text-white overflow-x-hidden">
+      {/* Container chính: Bỏ overflow-hidden để không cắt cánh tay */}
+      <div className="mx-auto px-4 lg:px-[40px] max-w-full">
+        
+        {/* Mobile Header (top 100px) */}
+        <header className="lg:hidden h-[100px] flex items-end pb-4 mb-8">
+           <Navigation activeTab={activeTab} setActiveTab={setActiveTab} isMobile />
+        </header>
+
+        <div className="flex flex-col lg:flex-row min-h-screen">
+          
+          {/* CỘT TRÁI: Logo & Intro (FIXED on Desktop) */}
+          <aside className="w-full lg:fixed lg:w-[400px] xl:w-[500px] lg:h-screen lg:pt-[100px] flex flex-col overflow-hidden bg-[#FFFFFA] z-10">
+            <h1 className="text-[48px] font-normal leading-none tracking-tight mb-[24px]">
+              QuanTran
+            </h1>
+            
+            <div className="space-y-[24px] flex flex-col">
+              <p className="text-[20px] font-normal leading-[1.3] text-[#2A2A2A]">
+                Tôi là QuanTran, một nhà thiết kế sản phẩm kiêm họa sĩ hoạt hình, chuyên về ✹ công cụ sáng tạo, ❂ hoạt hình và ✺ giáo dục.
+              </p>
+
+              <div className="grid grid-cols-2 gap-8">
+                <div>
+                  <h3 className="text-[20px] font-normal text-[#7B7B7B] mb-4">Thiết kế</h3>
+                  <ul className="text-[20px] font-normal leading-[1.3] text-[#2A2A2A] space-y-1">
+                    <li>Product design</li>
+                    <li>Tư duy thiết kế</li>
+                    <li>Figma</li>
+                    <li>GSAP</li>
+                    <li>Framer</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-[20px] font-normal text-[#7B7B7B] mb-4">Development</h3>
+                  <ul className="text-[20px] font-normal leading-[1.3] text-[#2A2A2A] space-y-1">
+                    <li>Tư duy builder</li>
+                    <li>Vibecoder</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          {/* CỘT PHẢI: Navigation & Content (Bỏ overflow-hidden để hiện cánh tay) */}
+          <main className="flex-1 lg:ml-[464px] xl:ml-[564px] lg:pt-[100px] flex flex-col min-w-0">
+            
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex justify-between items-start mb-12">
+               <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
+               <div className="flex gap-4">
+                  <div className="relative">
+                    <button 
+                      onClick={handleCopyMail}
+                      className="hover:scale-110 transition-transform focus:outline-none"
+                    >
+                      <Mail size={24} strokeWidth={1.5} />
+                    </button>
+                    {showMailTooltip && (
+                      <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap bg-black text-white text-[12px] px-3 py-1 rounded-md animate-in fade-in zoom-in duration-200">
+                        copied mail {email}
+                      </div>
+                    )}
+                  </div>
+                  <a 
+                    href="https://www.instagram.com/quan.pixel/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:scale-110 transition-transform"
+                  >
+                    <Instagram size={24} strokeWidth={1.5} />
+                  </a>
+               </div>
+            </nav>
+
+            {/* TAB CONTENT: PROJECTS */}
+            {activeTab === 'project' && (
+              <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <section className="space-y-[24px]">
+                  <ProjectItem 
+                    title="Dự án Echoo - UI/UX Instincts" 
+                    description="Bạn có 6 năm kinh nghiệm, tư duy sản phẩm và thẩm mỹ của bạn"
+                  />
+                  <ProjectItem 
+                    title="Dự án Portfolio v1" 
+                    description="Sản phẩm cá nhân tập trung vào hiệu năng và trải nghiệm người dùng."
+                  />
+                </section>
+
+                {/* OTHER PROJECTS section */}
+                <section className="overflow-hidden" style={{ marginTop: '48px' }}>
+                  <div className="mb-[20px]">
+                    <h2 className="text-[24px] font-medium uppercase tracking-tight">Other Project</h2>
+                  </div>
+
+                  {/* Carousel Container */}
+                  <div 
+                    ref={carouselRef}
+                    onMouseDown={handleMouseDown}
+                    onMouseLeave={handleMouseLeave}
+                    onMouseUp={handleMouseUp}
+                    onMouseMove={handleMouseMove}
+                    className={`flex gap-[8px] overflow-x-auto no-scrollbar cursor-grab active:cursor-grabbing select-none`}
+                    style={{ scrollSnapType: isDragging ? 'none' : 'x mandatory' }}
+                  >
+                    <OtherProjectCard 
+                      title="Befitter platform" 
+                      year="2025" 
+                      description="Move-to-earn ecosystem branding and interface design."
+                      logo="/other project/befitter.png"
+                    />
+                    <OtherProjectCard 
+                      title="KOC APP" 
+                      year="2025" 
+                      description="To ignite curiosity, inspiration, and expand horizons through understanding and deeper insights."
+                      logo="/other project/koc.png"
+                    />
+                    <OtherProjectCard 
+                      title="Project 3" 
+                      year="2024" 
+                      description="General interface and user research showcase."
+                      logo="/other project/default.png"
+                    />
+                  </div>
+
+                  {/* Controls */}
+                  <div className="flex gap-4 mt-8">
+                    <button onClick={() => scroll('left')} className="p-2 border border-black/10 rounded-full hover:bg-black hover:text-white transition-all">
+                      <ArrowLeft size={18} />
+                    </button>
+                    <button onClick={() => scroll('right')} className="p-2 border border-black/10 rounded-full hover:bg-black hover:text-white transition-all">
+                      <ArrowRight size={18} />
+                    </button>
+                  </div>
+                </section>
+              </div>
+            )}
+
+            {/* TAB CONTENT: MY CV */}
+            {activeTab === 'cv' && (
+              <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <section className="max-w-[600px] space-y-12 pb-32">
+                  <h2 className="text-[32px] font-bold">Contact Information</h2>
+                  <div className="space-y-6 text-[20px] leading-[1.3] text-[#2A2A2A]">
+                    <p>Gmail: <a href="mailto:tranmanhquan.ptit@gmail.com" className="underline font-medium">tranmanhquan.ptit@gmail.com</a></p>
+                    <p>Tôi là một nhà thiết kế luôn tìm kiếm những thử thách mới, kết hợp giữa tư duy thiết kế và khả năng phát triển thực tế.</p>
+                  </div>
+                  <button className="bg-black text-white px-8 py-4 rounded-full text-[20px] font-medium hover:scale-105 transition-transform flex items-center gap-2">
+                    My CV Online <ArrowRight size={20} />
+                  </button>
+                </section>
+              </div>
+            )}
+
+          </main>
+        </div>
+      </div>
+
+      <style>{`
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      `}</style>
+    </div>
+  );
+}
+
+// Sub-component for Navigation with the Finger Pointer logic
+function Navigation({ activeTab, setActiveTab, isMobile }: { activeTab: string, setActiveTab: (t: 'project' | 'cv') => void, isMobile?: boolean }) {
+  return (
+    <div className={`relative flex items-center gap-12 font-bold text-[16px]`}>
+      
+      {/* Bàn tay chỉ (Dịch trái thêm chút nữa cho cả 2 tab) */}
+      <div 
+        className="absolute -top-[110px] h-[160px] w-[350px] pointer-events-none transition-all duration-500 ease-in-out"
+        style={{ 
+          transform: activeTab === 'project' 
+            ? 'translateX(-240px)' 
+            : 'translateX(-120px)',
+        }}
+      >
+        <div 
+          className="w-full h-full"
+          style={{ 
+            // Chỉnh lại cao cho MY CV (33px) khác với PROJECT (23px)
+            transform: `rotate(60deg) translate(${activeTab === 'project' ? '23px' : '33px'}, -20px)`, 
+            transformOrigin: 'center center'
+          }}
+        >
+          <img 
+            src="/hand.png" 
+            alt="pointing hand" 
+            className="w-[210px] h-auto object-contain" 
+          />
+        </div>
+      </div>
+
+      <button 
+        onClick={() => setActiveTab('project')}
+        className={`transition-all tracking-tight ${activeTab === 'project' ? 'text-[#0360FF] opacity-100' : 'text-black opacity-40 hover:opacity-100'}`}
+      >
+        PROJECT
+      </button>
+      
+      <button 
+        onClick={() => setActiveTab('cv')}
+        className={`transition-all tracking-tight ${activeTab === 'cv' ? 'text-[#0360FF] opacity-100' : 'text-black opacity-40 hover:opacity-100'}`}
+      >
+        MY CV
+      </button>
+    </div>
+  );
+}
+
+function ProjectItem({ title, description }: { title: string, description: string }) {
+  return (
+    <div className="group space-y-[12px]">
+      <h3 className="text-[20px] font-normal leading-[1.3] text-[#000000]">
+        {title}: <span className="text-[#7B7B7B]">{description}</span>
+      </h3>
+      <div className="aspect-video w-full bg-[#E9E6E0] rounded-[32px] overflow-hidden relative border border-black/5">
+        <div className="absolute inset-0 flex items-center justify-center text-[#7B7B7B] opacity-20">
+           Video 16:9 Placeholder
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function OtherProjectCard({ title, year, description, logo }: { title: string, year: string, description: string, logo: string }) {
+  return (
+    <div className="shrink-0 w-[340px] h-[420px] bg-[#E9E6E0] rounded-[24px] p-[16px] flex flex-col justify-between border border-black/5 scroll-snap-align-start transition-none select-none">
+      <div className="space-y-[6px]">
+        <div className="w-[48px] h-[48px] bg-black rounded-[12px] flex items-center justify-center overflow-hidden mb-4">
+           <img src={logo} alt={title} className="w-full h-full object-cover" />
+        </div>
+        <h4 className="text-[18px] font-medium text-[#000000]">{title}</h4>
+        <span className="text-[16px] font-normal text-[#7B7B7B] block">{year}</span>
+      </div>
+      
+      <div className="space-y-4">
+        <p className="text-[16px] leading-[1.3] text-[#2A2A2A] line-clamp-4">
+          {description}
+        </p>
+        <div className="flex gap-2">
+           <span className="text-[14px] px-3 py-1 bg-black/5 rounded-full text-[#7B7B7B]">1078</span>
+           <span className="text-[14px] px-3 py-1 bg-black/5 rounded-full text-[#7B7B7B]">User in early adoption</span>
+        </div>
+      </div>
+    </div>
+  );
+}
