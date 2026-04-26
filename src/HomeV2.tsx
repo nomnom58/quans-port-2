@@ -48,22 +48,20 @@ export default function HomeV2() {
       <div className="mx-auto px-4 lg:px-[40px] max-w-full">
 
         {/* Mobile Header */}
-        <header className="lg:hidden flex flex-col gap-6 pt-12 mb-8">
+        <header className="lg:hidden flex flex-row flex-wrap justify-between items-center gap-6 pt-12 mb-[64px]">
           <Navigation activeTab={activeTab} setActiveTab={setActiveTab} isMobile />
-          <div className="flex flex-wrap items-center gap-4">
-            <SocialLinks
-              email={email}
-              showMailTooltip={showMailTooltip}
-              handleCopyMail={handleCopyMail}
-              cvUrl="https://drive.google.com/drive/u/0/folders/0ByKnjKg49xuZQVFEOFZiYmhyN2c?resourcekey=0-GL2DY6N06GwWT3AHFq9Lpg"
-            />
-          </div>
+          <SocialLinks
+            email={email}
+            showMailTooltip={showMailTooltip}
+            handleCopyMail={handleCopyMail}
+            cvUrl="https://drive.google.com/drive/u/0/folders/0ByKnjKg49xuZQVFEOFZiYmhyN2c?resourcekey=0-GL2DY6N06GwWT3AHFq9Lpg"
+          />
         </header>
 
         <div className="flex flex-col lg:flex-row min-h-screen">
 
           {/* CỘT TRÁI: Logo & Intro (FIXED on Desktop) */}
-          <aside className="w-full lg:fixed lg:w-[400px] xl:w-[500px] lg:h-screen lg:pt-[100px] flex flex-col overflow-hidden bg-[#FFFFFA] z-10">
+          <aside className="w-full lg:fixed lg:w-[400px] xl:w-[500px] lg:h-screen lg:pt-[100px] flex flex-col overflow-hidden bg-[#FFFFFA] z-10 mb-[64px] lg:mb-0">
             <h1 className="text-[48px] font-normal leading-none tracking-tight mb-[24px]">
               QuanTran
             </h1>
