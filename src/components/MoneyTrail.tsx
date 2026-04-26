@@ -29,6 +29,8 @@ export default function MoneyTrail({
         let index = 0
         const wrapper = gsap.utils.wrap(0, notes.length)
         let lastMousePos = { x: 0, y: 0 }
+        let currentMousePos = { x: 0, y: 0 }
+        let accumulatedScroll = 0
 
         if (!pileRef.current) return
 
@@ -96,6 +98,7 @@ export default function MoneyTrail({
         }
 
         const handleMouseMove = (e: MouseEvent) => {
+            currentMousePos = { x: e.clientX, y: e.clientY }
             xTo(e.clientX)
             yTo(e.clientY)
             const travelDistance = Math.hypot(
@@ -105,6 +108,14 @@ export default function MoneyTrail({
             if (travelDistance > gap) {
                 triggerAt(e.clientX, e.clientY)
                 lastMousePos = { x: e.clientX, y: e.clientY }
+            }
+        }
+
+        const handleWheel = (e: WheelEvent) => {
+            accumulatedScroll += Math.abs(e.deltaY)
+            if (accumulatedScroll > gap) {
+                triggerAt(currentMousePos.x, currentMousePos.y)
+                accumulatedScroll = 0
             }
         }
 
@@ -121,10 +132,12 @@ export default function MoneyTrail({
 
         window.addEventListener("mousemove", handleMouseMove)
         window.addEventListener("mousedown", handleMouseDown)
+        window.addEventListener("wheel", handleWheel)
 
         return () => {
             window.removeEventListener("mousemove", handleMouseMove)
             window.removeEventListener("mousedown", handleMouseDown)
+            window.removeEventListener("wheel", handleWheel)
             // Clean up GSAP animations
             notes.forEach(note => gsap.killTweensOf(note))
             if (pileRef.current) gsap.killTweensOf(pileRef.current)
