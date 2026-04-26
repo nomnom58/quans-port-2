@@ -323,7 +323,7 @@ function Navigation({ activeTab, setActiveTab, isMobile }: { activeTab: string, 
         className="absolute -top-[110px] h-[160px] w-[350px] pointer-events-none transition-all duration-500 ease-in-out"
         style={{
           transform: activeTab === 'project'
-            ? 'translateX(-240px)'
+            ? (isMobile ? 'translateX(-225px)' : 'translateX(-240px)')
             : 'translateX(-120px)',
         }}
       >
