@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { Mail, Instagram, ArrowLeft, ArrowRight, Copy } from 'lucide-react';
+import MoneyTrail from './components/MoneyTrail';
 
 export default function HomeV2() {
   const [activeTab, setActiveTab] = useState<'project' | 'cv'>('project');
@@ -44,6 +45,7 @@ export default function HomeV2() {
 
   return (
     <div className="min-h-screen bg-[#FFFFFA] text-[#000000] font-sans selection:bg-black selection:text-white overflow-x-hidden">
+      <MoneyTrail />
       {/* Container chính: Bỏ overflow-hidden để không cắt cánh tay */}
       <div className="mx-auto px-4 lg:px-[40px] max-w-full">
 
