@@ -51,10 +51,10 @@ export default function HomeV2() {
         <header className="lg:hidden flex flex-col gap-6 pt-12 mb-8">
           <Navigation activeTab={activeTab} setActiveTab={setActiveTab} isMobile />
           <div className="flex flex-wrap items-center gap-4">
-            <SocialLinks 
-              email={email} 
-              showMailTooltip={showMailTooltip} 
-              handleCopyMail={handleCopyMail} 
+            <SocialLinks
+              email={email}
+              showMailTooltip={showMailTooltip}
+              handleCopyMail={handleCopyMail}
               cvUrl="https://drive.google.com/drive/u/0/folders/0ByKnjKg49xuZQVFEOFZiYmhyN2c?resourcekey=0-GL2DY6N06GwWT3AHFq9Lpg"
             />
           </div>
@@ -101,10 +101,10 @@ export default function HomeV2() {
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex justify-between items-start mb-12">
               <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
-              <SocialLinks 
-                email={email} 
-                showMailTooltip={showMailTooltip} 
-                handleCopyMail={handleCopyMail} 
+              <SocialLinks
+                email={email}
+                showMailTooltip={showMailTooltip}
+                handleCopyMail={handleCopyMail}
                 cvUrl="https://drive.google.com/drive/u/0/folders/0ByKnjKg49xuZQVFEOFZiYmhyN2c?resourcekey=0-GL2DY6N06GwWT3AHFq9Lpg"
               />
             </nav>
@@ -117,8 +117,8 @@ export default function HomeV2() {
                     title="Echoo - Nền tảng tâm sự ẩn danh: Tư duy sản phẩm trong thực tế – Thiết kế xoay quanh sự riêng tư và lòng tin."
                   />
                   <ProjectItem
-                    title="Dự án Portfolio v1"
-                    description="Sản phẩm cá nhân tập trung vào hiệu năng và trải nghiệm người dùng."
+                    title="GoodMotion - Nền tảng chia sẻ GSAP library cho Framer"
+
                   />
                 </section>
 
@@ -202,7 +202,7 @@ export default function HomeV2() {
                   <h2 className="text-[32px] font-bold">Contact Information</h2>
                   <div className="space-y-6 text-[20px] leading-[1.3] text-[#2A2A2A]">
                     <p>Gmail: <a href="mailto:tranmanhquan.ptit@gmail.com" className="underline font-medium">tranmanhquan.ptit@gmail.com</a></p>
-                    <p>Tôi là một nhà thiết kế luôn tìm kiếm những thử thách mới, kết hợp giữa tư duy thiết kế và khả năng phát triển thực tế.</p>
+                    <p>Chào bạn, tôi là Quân, một Senior Product Designer chuyên chuyển hóa những ý tưởng phức tạp thành sản phẩm thực tế. Thay vì những bản vẽ trên giấy, tôi chứng minh tư duy sản phẩm của mình qua việc vận hành Echoo (từ logic đến thực thi) và đang phát hành GoodMotion — thư viện GSAP dành cho người dùng Framer.</p>
                   </div>
                   <button className="bg-black text-white px-8 py-4 rounded-full text-[20px] font-medium hover:scale-105 transition-transform flex items-center gap-2">
                     My CV Online <ArrowRight size={20} />
@@ -223,9 +223,9 @@ export default function HomeV2() {
   );
 }
 
-function SocialLinks({ email, showMailTooltip, handleCopyMail, cvUrl }: { 
-  email: string, 
-  showMailTooltip: boolean, 
+function SocialLinks({ email, showMailTooltip, handleCopyMail, cvUrl }: {
+  email: string,
+  showMailTooltip: boolean,
   handleCopyMail: () => void,
   cvUrl: string
 }) {
@@ -313,11 +313,11 @@ function Navigation({ activeTab, setActiveTab, isMobile }: { activeTab: string, 
   );
 }
 
-function ProjectItem({ title, description }: { title: string, description: string }) {
+function ProjectItem({ title, description = "" }: { title: string, description?: string }) {
   return (
     <div className="group space-y-[12px]">
       <h3 className="text-[20px] font-normal leading-[1.3] text-[#000000]">
-        {title}: <span className="text-[#7B7B7B]">{description}</span>
+        {title}{description && ": "}<span className="text-[#7B7B7B]">{description}</span>
       </h3>
       <div className="aspect-video w-full bg-[#E9E6E0] rounded-[32px] overflow-hidden relative border border-black/5">
         <div className="absolute inset-0 flex items-center justify-center text-[#7B7B7B] opacity-20">
