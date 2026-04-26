@@ -389,4 +389,3 @@ function OtherProjectCard({ title, year, description, logo, caseStudy = "In prog
     </div>
   );
 }
-}
