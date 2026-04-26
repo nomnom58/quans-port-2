@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Mail, Instagram, ArrowLeft, ArrowRight, Copy } from 'lucide-react';
 import MoneyTrail from './components/MoneyTrail';
 
@@ -115,10 +115,13 @@ export default function HomeV2() {
                 <section className="space-y-[24px]">
                   <ProjectItem
                     title="Echoo - Nền tảng tâm sự ẩn danh: Tư duy sản phẩm trong thực tế – Thiết kế xoay quanh sự riêng tư và lòng tin."
+                    videoSrc="/video/Echoo-nen.webm"
+                    thumbnail="/video/Echoo-thumnail.png"
                   />
                   <ProjectItem
                     title="GoodMotion - Nền tảng chia sẻ GSAP library cho Framer"
-
+                    videoSrc="/video/Gsap.webm"
+                    thumbnail="/video/GSAP-thumnail.png"
                   />
                 </section>
 
@@ -362,16 +365,62 @@ function Navigation({ activeTab, setActiveTab, isMobile }: { activeTab: string, 
   );
 }
 
-function ProjectItem({ title, description = "" }: { title: string, description?: string }) {
+function ProjectItem({ title, description = "", videoSrc, thumbnail }: {
+  title: string,
+  description?: string,
+  videoSrc?: string,
+  thumbnail?: string
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !videoSrc) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {
+              // Handle potential autoplay restrictions
+            });
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(video);
+
+    return () => {
+      observer.unobserve(video);
+    };
+  }, [videoSrc]);
+
   return (
     <div className="group space-y-[12px]">
       <h3 className="text-[20px] font-normal leading-[1.3] text-[#000000]">
         {title}{description && ": "}<span className="text-[#7B7B7B]">{description}</span>
       </h3>
       <div className="aspect-video w-full bg-[#E9E6E0] rounded-[32px] overflow-hidden relative border border-black/5">
-        <div className="absolute inset-0 flex items-center justify-center text-[#7B7B7B] opacity-20">
-          Video 16:9 Placeholder
-        </div>
+        {videoSrc ? (
+          <video
+            ref={videoRef}
+            src={videoSrc}
+            poster={thumbnail}
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center text-[#7B7B7B] opacity-20">
+            Video 16:9 Placeholder
+          </div>
+        )}
       </div>
     </div>
   );
