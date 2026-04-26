@@ -47,9 +47,17 @@ export default function HomeV2() {
       {/* Container chính: Bỏ overflow-hidden để không cắt cánh tay */}
       <div className="mx-auto px-4 lg:px-[40px] max-w-full">
 
-        {/* Mobile Header (top 100px) */}
-        <header className="lg:hidden h-[100px] flex items-end pb-4 mb-8">
+        {/* Mobile Header */}
+        <header className="lg:hidden flex flex-col gap-6 pt-12 mb-8">
           <Navigation activeTab={activeTab} setActiveTab={setActiveTab} isMobile />
+          <div className="flex flex-wrap items-center gap-4">
+            <SocialLinks 
+              email={email} 
+              showMailTooltip={showMailTooltip} 
+              handleCopyMail={handleCopyMail} 
+              cvUrl="https://drive.google.com/drive/u/0/folders/0ByKnjKg49xuZQVFEOFZiYmhyN2c?resourcekey=0-GL2DY6N06GwWT3AHFq9Lpg"
+            />
+          </div>
         </header>
 
         <div className="flex flex-col lg:flex-row min-h-screen">
@@ -62,7 +70,7 @@ export default function HomeV2() {
 
             <div className="space-y-[24px] flex flex-col">
               <p className="text-[20px] font-normal leading-[1.3] text-[#2A2A2A]">
-                Tôi là QuanTran, một nhà thiết kế sản phẩm kiêm họa sĩ hoạt hình, chuyên về ✹ công cụ sáng tạo, ❂ hoạt hình và ✺ giáo dục.
+                Tôi là QuanTran, một Product Designer, chuyên về <span className="text-[#005EFF]">✹ Tư duy sản phẩm</span>, <span className="text-[#EA5B0E]">❂ Trải nghiệm tương tác</span> và <span className="text-[#D016CD]">✺ Xây dựng sản phẩm bằng AI</span>.
               </p>
 
               <div className="grid grid-cols-2 gap-8">
@@ -93,29 +101,12 @@ export default function HomeV2() {
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex justify-between items-start mb-12">
               <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
-              <div className="flex gap-4">
-                <div className="relative">
-                  <button
-                    onClick={handleCopyMail}
-                    className="hover:scale-110 transition-transform focus:outline-none"
-                  >
-                    <Mail size={24} strokeWidth={1.5} />
-                  </button>
-                  {showMailTooltip && (
-                    <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap bg-black text-white text-[12px] px-3 py-1 rounded-md animate-in fade-in zoom-in duration-200">
-                      copied mail {email}
-                    </div>
-                  )}
-                </div>
-                <a
-                  href="https://www.instagram.com/quan.pixel/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:scale-110 transition-transform"
-                >
-                  <Instagram size={24} strokeWidth={1.5} />
-                </a>
-              </div>
+              <SocialLinks 
+                email={email} 
+                showMailTooltip={showMailTooltip} 
+                handleCopyMail={handleCopyMail} 
+                cvUrl="https://drive.google.com/drive/u/0/folders/0ByKnjKg49xuZQVFEOFZiYmhyN2c?resourcekey=0-GL2DY6N06GwWT3AHFq9Lpg"
+              />
             </nav>
 
             {/* TAB CONTENT: PROJECTS */}
@@ -123,8 +114,7 @@ export default function HomeV2() {
               <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <section className="space-y-[24px]">
                   <ProjectItem
-                    title="Dự án Echoo - UI/UX Instincts"
-                    description="Bạn có 6 năm kinh nghiệm, tư duy sản phẩm và thẩm mỹ của bạn"
+                    title="Echoo - Nền tảng tâm sự ẩn danh: Tư duy sản phẩm trong thực tế – Thiết kế xoay quanh sự riêng tư và lòng tin."
                   />
                   <ProjectItem
                     title="Dự án Portfolio v1"
@@ -233,6 +223,49 @@ export default function HomeV2() {
   );
 }
 
+function SocialLinks({ email, showMailTooltip, handleCopyMail, cvUrl }: { 
+  email: string, 
+  showMailTooltip: boolean, 
+  handleCopyMail: () => void,
+  cvUrl: string
+}) {
+  return (
+    <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+      <a
+        href={cvUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="px-[12px] py-[7px] bg-[#005EFF] text-white rounded-[14px] text-[16px] font-medium hover:opacity-80 transition-all"
+      >
+        View my CV
+      </a>
+      <div className="flex items-center gap-4">
+        <div className="relative">
+          <button
+            onClick={handleCopyMail}
+            className="hover:scale-110 transition-transform focus:outline-none flex items-center"
+          >
+            <Mail size={22} strokeWidth={1.5} />
+          </button>
+          {showMailTooltip && (
+            <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap bg-black text-white text-[12px] px-3 py-1 rounded-md animate-in fade-in zoom-in duration-200 z-50">
+              copied mail {email}
+            </div>
+          )}
+        </div>
+        <a
+          href="https://www.instagram.com/quan.pixel/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:scale-110 transition-transform flex items-center"
+        >
+          <Instagram size={22} strokeWidth={1.5} />
+        </a>
+      </div>
+    </div>
+  );
+}
+
 // Sub-component for Navigation with the Finger Pointer logic
 function Navigation({ activeTab, setActiveTab, isMobile }: { activeTab: string, setActiveTab: (t: 'project' | 'cv') => void, isMobile?: boolean }) {
   return (
@@ -324,26 +357,39 @@ function OtherProjectCard({ title, year, description, logo, caseStudy = "In prog
           <img src={logo} alt={title} className="w-full h-full object-contain" />
         </div>
         <div className="flex flex-col">
-          <h4 className={`text-[18px] font-medium leading-none mb-1 ${
-            isKOC ? 'text-[#0D65F2]' : isTitan ? 'text-[#3E2F0C]' : (isDimuadi || isDeFarm || isChozoi) ? 'text-[#FFFFFF]' : isBefitter ? 'text-[#A62900]' : 'text-[#000000]'
-          }`}>{title}</h4>
-          <span className={`text-[16px] font-normal ${
-            isKOC ? 'text-[#0D65F2]/75' : isTitan ? 'text-[#3E2F0C]/75' : (isDimuadi || isDeFarm || isChozoi) ? 'text-[#FFFFFF]/75' : isBefitter ? 'text-[#A62900]/75' : 'text-[#7B7B7B]'
-          }`}>{year}</span>
+          <h4 className={`text-[18px] font-medium leading-none mb-1 ${isKOC ? 'text-[#0D65F2]' : isTitan ? 'text-[#3E2F0C]' : (isDimuadi || isDeFarm || isChozoi) ? 'text-[#FFFFFF]' : isBefitter ? 'text-[#A62900]' : 'text-[#000000]'
+            }`}>{title}</h4>
+          <span className={`text-[16px] font-normal ${isKOC ? 'text-[#0D65F2]/75' : isTitan ? 'text-[#3E2F0C]/75' : (isDimuadi || isDeFarm || isChozoi) ? 'text-[#FFFFFF]/75' : isBefitter ? 'text-[#A62900]/75' : 'text-[#7B7B7B]'
+            }`}>{year}</span>
         </div>
       </div>
 
       <div className="flex-1 flex flex-col justify-end">
         <div className="space-y-2">
-          <p className={`text-[16px] leading-[1.3] mb-2 ${
-            isKOC ? 'text-[#0D65F2]' : isTitan ? 'text-[#3E2F0C]' : (isDimuadi || isDeFarm || isChozoi) ? 'text-[#FFFFFF]' : isBefitter ? 'text-[#A62900]' : 'text-[#2A2A2A]'
-          }`}>
+          <p className={`text-[16px] leading-[1.3] mb-2 ${isKOC ? 'text-[#0D65F2]' : isTitan ? 'text-[#3E2F0C]' : (isDimuadi || isDeFarm || isChozoi) ? 'text-[#FFFFFF]' : isBefitter ? 'text-[#A62900]' : 'text-[#2A2A2A]'
+            }`}>
             {description}
           </p>
           <div className="space-y-2">
-            <div className={`inline-block px-[10px] py-[4px] ${
-              isKOC 
-                ? 'bg-[#C7DAEF] rounded-[100px] text-[14px] text-[#005DF2] font-medium' 
+            <div className={`inline-block px-[10px] py-[4px] ${isKOC
+              ? 'bg-[#C7DAEF] rounded-[100px] text-[14px] text-[#005DF2] font-medium'
+              : isTitan
+                ? 'bg-[#ECE5DB] border border-[#C5B593] rounded-[100px] text-[14px] text-[#3E2F2D] font-medium'
+                : isDimuadi
+                  ? 'bg-[#003482] rounded-[100px] text-[14px] text-[#FFFFFF] font-medium'
+                  : isBefitter
+                    ? 'bg-[#FF6B35]/10 border border-dashed border-[#FFAB8C] rounded-[100px] text-[14px] text-[#A62900] font-medium'
+                    : isDeFarm
+                      ? 'bg-[#B0B2B2]/30 border border-dashed border-[#B0B2B2] rounded-[100px] text-[14px] text-[#FFFFFF] font-medium'
+                      : isChozoi
+                        ? 'bg-[#3177EE] border border-dashed border-[#7BABFF] rounded-[100px] text-[14px] text-[#FFFFFF] font-medium'
+                        : 'px-[6px] text-[18px] text-[#2A2A2A]'
+              }`}>
+              Case study: {caseStudy}
+            </div>
+            <div className="block">
+              <div className={`inline-block px-[10px] py-[4px] ${isKOC
+                ? 'bg-[#C7DAEF] rounded-[100px] text-[14px] text-[#005DF2] font-medium'
                 : isTitan
                   ? 'bg-[#ECE5DB] border border-[#C5B593] rounded-[100px] text-[14px] text-[#3E2F2D] font-medium'
                   : isDimuadi
@@ -355,25 +401,7 @@ function OtherProjectCard({ title, year, description, logo, caseStudy = "In prog
                         : isChozoi
                           ? 'bg-[#3177EE] border border-dashed border-[#7BABFF] rounded-[100px] text-[14px] text-[#FFFFFF] font-medium'
                           : 'px-[6px] text-[18px] text-[#2A2A2A]'
-            }`}>
-              Case study: {caseStudy}
-            </div>
-            <div className="block">
-              <div className={`inline-block px-[10px] py-[4px] ${
-                isKOC 
-                  ? 'bg-[#C7DAEF] rounded-[100px] text-[14px] text-[#005DF2] font-medium' 
-                  : isTitan
-                    ? 'bg-[#ECE5DB] border border-[#C5B593] rounded-[100px] text-[14px] text-[#3E2F2D] font-medium'
-                    : isDimuadi
-                      ? 'bg-[#003482] rounded-[100px] text-[14px] text-[#FFFFFF] font-medium'
-                      : isBefitter
-                        ? 'bg-[#FF6B35]/10 border border-dashed border-[#FFAB8C] rounded-[100px] text-[14px] text-[#A62900] font-medium'
-                        : isDeFarm
-                          ? 'bg-[#B0B2B2]/30 border border-dashed border-[#B0B2B2] rounded-[100px] text-[14px] text-[#FFFFFF] font-medium'
-                          : isChozoi
-                            ? 'bg-[#3177EE] border border-dashed border-[#7BABFF] rounded-[100px] text-[14px] text-[#FFFFFF] font-medium'
-                            : 'px-[6px] text-[18px] text-[#2A2A2A]'
-              }`}>
+                }`}>
                 {link?.label}: {link?.url ? (
                   <a href={link.url} target="_blank" rel="noopener noreferrer" className="underline hover:opacity-70 transition-opacity">
                     {link.text}
