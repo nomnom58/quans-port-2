@@ -392,7 +392,7 @@ function OtherProjectCard({ title, year, description, logo, caseStudy = "In prog
 
   return (
     <div
-      className="shrink-0 w-[340px] h-[420px] rounded-[24px] p-[16px] flex flex-col justify-between scroll-snap-align-start transition-none select-none overflow-hidden"
+      className="shrink-0 w-[310px] lg:w-[340px] h-[420px] rounded-[24px] p-[16px] flex flex-col justify-between scroll-snap-align-start transition-none select-none overflow-hidden"
       style={{
         background: isKOC
           ? 'linear-gradient(180deg, #C2E6F2 0%, #EFEFEF 100%)'
