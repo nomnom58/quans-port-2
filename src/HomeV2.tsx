@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { Mail, Instagram, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Mail, Instagram, ArrowLeft, ArrowRight, Copy } from 'lucide-react';
 
 export default function HomeV2() {
   const [activeTab, setActiveTab] = useState<'project' | 'cv'>('project');
@@ -198,15 +198,64 @@ export default function HomeV2() {
             {/* TAB CONTENT: MY CV */}
             {activeTab === 'cv' && (
               <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <section className="max-w-[600px] space-y-12 pb-32">
-                  <h2 className="text-[32px] font-bold">Contact Information</h2>
-                  <div className="space-y-6 text-[20px] leading-[1.3] text-[#2A2A2A]">
-                    <p>Gmail: <a href="mailto:tranmanhquan.ptit@gmail.com" className="underline font-medium">tranmanhquan.ptit@gmail.com</a></p>
-                    <p>Chào bạn, tôi là Quân, một Senior Product Designer chuyên chuyển hóa những ý tưởng phức tạp thành sản phẩm thực tế. Thay vì những bản vẽ trên giấy, tôi chứng minh tư duy sản phẩm của mình qua việc vận hành Echoo (từ logic đến thực thi) và đang phát hành GoodMotion — thư viện GSAP dành cho người dùng Framer.</p>
+                <section className="max-w-[800px] space-y-12 pb-32">
+                  <h2 className="text-[20px] font-medium leading-[1.3] text-[#000000]">
+                    Senior Product Designer với tư duy thực thi. Tôi sử dụng AI để phá vỡ giới hạn giữa bản vẽ và sản phẩm thực tế.
+                  </h2>
+                  <div className="space-y-6 text-[20px] font-normal leading-[1.3] text-[#2A2A2A]">
+                    <p>
+                      Chào bạn, tôi là Quân, một Senior Product Designer chuyên chuyển hóa những ý tưởng phức tạp thành sản phẩm thực tế. 
+                      Thay vì những bản vẽ trên giấy, tôi chứng minh tư duy sản phẩm của mình qua việc vận hành Echoo (từ logic đến thực thi) 
+                      và đang phát hành GoodMotion — thư viện GSAP dành cho người dùng Framer.
+                    </p>
+                    <p>
+                      Với tôi, thiết kế đẹp chỉ là điều kiện cần, điều kiện đủ là khả năng thực thi kỹ thuật và hiệu suất 60fps. 
+                      Bạn có thể xem chi tiết cách tôi giải quyết vấn đề tại:
+                    </p>
+                    <ul className="list-none space-y-4">
+                      <li>
+                        • <span className="font-semibold underline cursor-pointer hover:opacity-70 transition-opacity">[Case Study Echoo]</span> – Tư duy sản phẩm & Vận hành.
+                      </li>
+                      <li>
+                        • <span className="font-semibold underline cursor-pointer hover:opacity-70 transition-opacity">[GoodMotion]</span> – Kỹ thuật tương tác & Animation.
+                      </li>
+                    </ul>
+                    <p>
+                      Luôn sẵn sàng cho những thử thách sản phẩm tiếp theo.
+                    </p>
                   </div>
-                  <button className="bg-black text-white px-8 py-4 rounded-full text-[20px] font-medium hover:scale-105 transition-transform flex items-center gap-2">
-                    My CV Online <ArrowRight size={20} />
-                  </button>
+                  
+                  <div className="flex flex-wrap items-center gap-2">
+                     {/* View my CV button */}
+                     <a 
+                       href="https://drive.google.com/drive/u/0/folders/0ByKnjKg49xuZQVFEOFZiYmhyN2c?resourcekey=0-GL2DY6N06GwWT3AHFq9Lpg"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       className="px-[12px] py-[7px] bg-[#005EFF] text-white rounded-[14px] text-[16px] font-medium hover:opacity-80 transition-all h-[38px] flex items-center"
+                     >
+                       View my CV
+                     </a>
+
+                     {/* Dynamic Copy Email button */}
+                     <button 
+                       onClick={handleCopyMail}
+                       className="group flex items-center px-[12px] py-[7px] bg-white border-[1.5px] border-[#005EFF] rounded-[14px] transition-all hover:bg-[#005EFF]/10 h-[38px]"
+                     >
+                       <span className={`text-[16px] transition-colors whitespace-nowrap ${showMailTooltip ? 'text-[#005EFF]' : 'text-[#414141] group-hover:text-[#005EFF]'}`}>
+                         {showMailTooltip ? 'COPIED EMAIL!!!' : 'tranmanhquan.ptit@gmail.com'}
+                       </span>
+                       
+                       {!showMailTooltip && (
+                         <span className="ml-[8px] text-[16px] text-[#005EFF] font-medium whitespace-nowrap">
+                           COPY
+                         </span>
+                       )}
+                       
+                       <div className={`${showMailTooltip ? 'ml-[8px]' : 'ml-[4px]'} text-[#005EFF] flex items-center`}>
+                          <Copy size={18} strokeWidth={1.5} />
+                       </div>
+                     </button>
+                  </div>
                 </section>
               </div>
             )}
