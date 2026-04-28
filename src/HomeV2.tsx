@@ -1,9 +1,21 @@
 import { useState, useRef, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Mail, Instagram, ArrowLeft, ArrowRight, Copy } from 'lucide-react';
 import MoneyTrail from './components/MoneyTrail';
 
 export default function HomeV2() {
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState<'project' | 'cv'>('project');
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const tab = params.get('tab');
+    if (tab === 'cv') {
+      setActiveTab('cv');
+    } else if (tab === 'project') {
+      setActiveTab('project');
+    }
+  }, [location]);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);

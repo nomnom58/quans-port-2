@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import { Framer, MousePointer2, Monitor, Smartphone, ArrowLeft, Eye, Github, Check, Zap, Copy, ArrowRightToLine, LockKeyhole, DollarSign, Maximize, ChevronsRight, Users } from 'lucide-react';
 import { Button } from './components/Button';
 import EchooShowcase from './EchooShowcase';
+import EchooShowcaseV2 from './EchooShowcaseV2';
 import QuansPortfolio from './QuansPortfolio';
 import HomeV2 from './HomeV2';
 import gsap from 'gsap';
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/v2" element={<HomeV2 />} />
           <Route path="/showcase/echoo" element={<EchooShowcase />} />
+          <Route path="/showcase/echoo-v2" element={<EchooShowcaseV2 />} />
           <Route path="/showcase/quans-portfolio" element={<QuansPortfolio />} />
         </Routes>
       </Router>
