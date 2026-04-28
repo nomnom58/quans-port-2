@@ -13,7 +13,7 @@ type Props = {
 export default function MoneyTrail({
     gap = 140,
     noteSize = 45,
-    pileSize = 75,
+    pileSize = 64,
     moneyPileUrl = "https://i.postimg.cc/Y4fX1D3q/pillar.png",
     noteUrls = [
         "https://i.postimg.cc/kVd1RPxG/dolar-1.png",
