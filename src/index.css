@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap');
 @import "tailwindcss";
+@import "splitting/dist/splitting.css";
+@import "splitting/dist/splitting-cells.css";
 
 :root {
   --page-padding: clamp(1.25rem, 8vw, 12rem);
