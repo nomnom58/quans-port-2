@@ -16,12 +16,12 @@ export const ShowcaseToggleV2: React.FC<ShowcaseToggleV2Props> = ({
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div className="w-full bg-[#FFFFFF] border border-dashed border-[#D3D3D3] rounded-[12px] md:rounded-[16px] shadow-[4px_4px_8px_rgba(0,0,0,0.06)] overflow-hidden">
+    <div className="w-full bg-[#F8F8F8] border border-dashed border-[#D3D3D3] rounded-[12px] md:rounded-[16px] shadow-[4px_4px_8px_rgba(0,0,0,0.06)] overflow-hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full p-3 flex items-start justify-between group"
+        className="w-full px-3 py-[10px] flex items-start justify-between group"
       >
-        <span className="text-[14px] leading-[20px] md:text-[16px] md:leading-[22px] font-medium text-[#575757] text-left">
+        <span className={`text-[14px] leading-[20px] md:text-[16px] md:leading-[22px] text-left transition-colors duration-200 ${isOpen ? 'font-[600] text-[#212121]' : 'font-[500] text-[#575757]'}`}>
           {title}
         </span>
         <motion.div
@@ -41,7 +41,7 @@ export const ShowcaseToggleV2: React.FC<ShowcaseToggleV2Props> = ({
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="px-3 pb-3">
+            <div className="px-3 pb-[10px]">
               <div className="mt-[10px] text-[14px] leading-[20px] md:text-[16px] md:leading-[22px] text-[#575757] font-medium">
                 {children}
               </div>

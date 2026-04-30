@@ -1,7 +1,11 @@
+import { QuestionBubble } from './components/QuestionBubble';
+import { AnswerBubble } from './components/AnswerBubble';
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Monitor, Github, Globe, Eye, ChevronLeft } from 'lucide-react';
+import { Monitor, Github, Globe, Eye, ChevronLeft, Bookmark, LayoutTemplate, Activity, Send, Bot, AlertCircle, Users } from 'lucide-react';
 import { ShowcaseToggleV2 } from './components/ShowcaseToggleV2';
+import { ShowcaseCard } from './components/ShowcaseCard';
+import { ShowcaseMetricCard } from './components/ShowcaseMetricCard';
 import { motion } from 'motion/react';
 import ShowcaseNav from './components/ShowcaseNav';
 
@@ -145,52 +149,36 @@ const EchooShowcaseV2: React.FC = () => {
               <h2 className="text-[16px] md:text-[20px] text-[#1D1D1D] mb-[16px] underline font-medium">The Strategy</h2>
 
               {/* Question Row */}
-              <div className="flex items-start gap-[8px] md:gap-[16px] mb-[16px]">
-                <img src="/showcase/echoo/header.png" alt="Question Icon" className="w-8 h-8 shrink-0" />
-                <p
-                  className="text-[16px] md:text-[20px] leading-[22px] md:leading-[26px] text-[#1D1D1D] font-medium"
-                >
-                  What’s Echoo and Why does it exist?
-                </p>
-              </div>
+              <QuestionBubble text="What’s Echoo and Why does it exist?" />
 
               {/* Answer Row */}
-              <div className="flex items-start gap-[8px] md:gap-[16px]">
-                <img
-                  src="/showcase/echoo/echoo_favicon.png"
-                  alt="Echoo Favicon"
-                  className="w-[24px] h-[24px] md:w-[32px] md:h-[32px] shrink-0"
-                />
-                <div className="flex-1">
-                  <p
-                    className="text-[16px] md:text-[20px] leading-[22px] md:leading-[26px] text-[#575757] mb-[16px] font-medium"
-                  >
-                    Echoo is a confessional app for people aged 16-35 who want to share secrets anonymously but safely.<br /><br />
-                    They can't tell friends (privacy), can't post on social media (family sees), and existing confession apps are toxic. Echoo isn't a "drama forum" like Reddit/Whisper. It's an "emotional outlet" - share, feel lighter, move on.
-                  </p>
-                  <div className="space-y-2">
-                    <ShowcaseToggleV2 title="Who's behind Echoo?">
-                      I’m Quan. I’m solo founder of Echoo. I identified the problem, designed the product, coded it, and marketed it. Solo-built from A-Z: product strategy, UI/UX, full-stack engineering, marketing.
-                    </ShowcaseToggleV2>
-                    <ShowcaseToggleV2 title="Who uses Echoo?">
-                      Mostly 16-35 year-olds. They want validation from strangers, but need anonymity and safety. They're scared of judgment, not seeking debate.
-                    </ShowcaseToggleV2>
-                    <ShowcaseToggleV2 title="Echoo's product positioning">
-                      Need: Wants validation but fears judgment from acquaintances.<br />
-                      Pain: Fear of being identified as an acquaintance lurking on Facebook.
-                    </ShowcaseToggleV2>
-                    <ShowcaseToggleV2 title="Competitive Audit: Reddit/Whisper">
-                      <div className="text-[14px] leading-[20px] md:text-[16px] md:leading-[22px] text-[#575757] font-[500]">
-                        <ul className="list-disc pl-5 mt-2">
-                          <li>Reddit/FB Groups: Spread drama, manipulate the crowd, prone to toxicity.</li>
-                          <li>Whisper: Algorithm easily diluted, high toxicity.</li>
-                          <li>Echoo's Pivot: Disables comments to completely eliminate offensive language, only retaining reactions to acknowledge emotions.</li>
-                        </ul>
-                      </div>
-                    </ShowcaseToggleV2>
-                  </div>
+              <AnswerBubble>
+                <p
+                  className="text-[16px] md:text-[20px] leading-[22px] md:leading-[26px] text-[#575757] mb-[16px] font-medium"
+                >
+                  Echoo is a confessional app for people aged 16-35 who want to share secrets anonymously but safely.<br /><br />
+                  They can't tell friends (privacy), can't post on social media (family sees), and existing confession apps are toxic. Echoo isn't a "drama forum" like Reddit/Whisper. It's an "emotional outlet" - share, feel lighter, move on.
+                </p>
+                <img src="/showcase/echoo/emotion_outlet.png" className="w-full md:w-[500px] h-auto mt-4 mb-4 rounded-[16px]" alt="Emotion Outlet" />
+                <div className="space-y-2">
+                  <ShowcaseToggleV2 title="Who uses Echoo?">
+                    Mostly 16-35 year-olds. They want validation from strangers, but need anonymity and safety. They're scared of judgment, not seeking debate.
+                  </ShowcaseToggleV2>
+                  <ShowcaseToggleV2 title="Echoo's product positioning">
+                    Need: Wants validation but fears judgment from acquaintances.<br />
+                    Pain: Fear of being identified as an acquaintance lurking on Facebook.
+                  </ShowcaseToggleV2>
+                  <ShowcaseToggleV2 title="Competitive Audit: Reddit/Whisper">
+                    <div className="text-[14px] leading-[20px] md:text-[16px] md:leading-[22px] text-[#575757] font-[500]">
+                      <ul className="list-disc pl-5 mt-2">
+                        <li>Reddit/FB Groups: Spread drama, manipulate the crowd, prone to toxicity.</li>
+                        <li>Whisper: Algorithm easily diluted, high toxicity.</li>
+                        <li>Echoo's Pivot: Disables comments to completely eliminate offensive language, only retaining reactions to acknowledge emotions.</li>
+                      </ul>
+                    </div>
+                  </ShowcaseToggleV2>
                 </div>
-              </div>
+              </AnswerBubble>
             </FadeIn>
           </section>
 
@@ -200,62 +188,49 @@ const EchooShowcaseV2: React.FC = () => {
               <h2 className="text-[16px] md:text-[20px] text-[#1D1D1D] mb-[16px] underline font-medium">System Architecture</h2>
 
               {/* Question Row */}
-              <div className="flex items-start gap-[8px] md:gap-[16px] mb-[16px]">
-                <img src="/showcase/echoo/header.png" alt="Question Icon" className="w-8 h-8 shrink-0" />
-                <p
-                  className="text-[16px] md:text-[20px] leading-[22px] md:leading-[26px] text-[#1D1D1D] font-medium"
-                >
-                  How is Echoo built? What's under the hood?
-                </p>
-              </div>
+              <QuestionBubble text="How is Echoo built? What's under the hood?" />
 
               {/* Answer Row */}
-              <div className="flex items-start gap-[8px] md:gap-[16px]">
-                <img
-                  src="/showcase/echoo/echoo_favicon.png"
-                  alt="Echoo Favicon"
-                  className="w-[24px] h-[24px] md:w-[32px] md:h-[32px] shrink-0"
-                />
-                <div className="flex-1">
-                  <div className="text-[16px] md:text-[20px] leading-[22px] md:leading-[26px] text-[#575757] mb-[16px] font-medium">
-                    <p
-                      className="mb-2"
-                    >
-                      Echoo uses a clean architecture:
-                    </p>
-                    <ul className="list-disc list-inside space-y-1 ml-2">
-                      <li>User scrolls (swipe integration)</li>
-                      <li>Client tracks what you've seen (localStorage)</li>
-                      <li>Server filters out old posts (PostgreSQL RPC)</li>
-                      <li>Database enforces anonymity (Supabase RLS)</li>
-                      <li>Feed displays smoothly (60fps, no loading)</li>
-                    </ul>
-                    <p
-                      className="mt-4"
-                    >
-                      Result: Instant, smooth, private experience.
-                    </p>
-                  </div>
-
-                  <ShowcaseToggleV2 title="System Architecture (How the pieces talk)">
-                    <div className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px] text-[#575757] font-[500]">
-                      User Interaction (Swipe/Read) <br />
-                      ↓ <br />
-                      Client Logic (Debounce & LocalStorage Seen-ID) <br />
-                      ↓ <br />
-                      Request (PageIndex + Seen-IDs) <br />
-                      ↓ <br />
-                      Edge/Server (Supabase RPC duplicate post filtering) <br />
-                      ↓ <br />
-                      Security Layer (RLS protects anonymous read/write rights) <br />
-                      ↓ <br />
-                      Response (Clean Data) <br />
-                      ↓ <br />
-                      UI (Infinite Scroll)
-                    </div>
-                  </ShowcaseToggleV2>
+              <AnswerBubble>
+                <div className="text-[16px] md:text-[20px] leading-[22px] md:leading-[26px] text-[#575757] mb-[16px] font-medium">
+                  <p
+                    className="mb-2"
+                  >
+                    Echoo uses a clean architecture:
+                  </p>
+                  <ul className="list-disc list-inside space-y-1 ml-2">
+                    <li>User scrolls (swipe integration)</li>
+                    <li>Client tracks what you've seen (localStorage)</li>
+                    <li>Server filters out old posts (PostgreSQL RPC)</li>
+                    <li>Database enforces anonymity (Supabase RLS)</li>
+                    <li>Feed displays smoothly (60fps, no loading)</li>
+                  </ul>
+                  <p
+                    className="mt-4"
+                  >
+                    Result: Instant, smooth, private experience.
+                  </p>
+                  <img src="/showcase/echoo/echoo_architecture.png" className="w-full md:w-[400px] h-auto mt-4 mb-2 rounded-[16px]" alt="Architecture" />
                 </div>
-              </div>
+
+                <ShowcaseToggleV2 title="System Architecture (How the pieces talk)">
+                  <div className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px] text-[#575757] font-[500]">
+                    User Interaction (Swipe/Read) <br />
+                    ↓ <br />
+                    Client Logic (Debounce & LocalStorage Seen-ID) <br />
+                    ↓ <br />
+                    Request (PageIndex + Seen-IDs) <br />
+                    ↓ <br />
+                    Edge/Server (Supabase RPC duplicate post filtering) <br />
+                    ↓ <br />
+                    Security Layer (RLS protects anonymous read/write rights) <br />
+                    ↓ <br />
+                    Response (Clean Data) <br />
+                    ↓ <br />
+                    UI (Infinite Scroll)
+                  </div>
+                </ShowcaseToggleV2>
+              </AnswerBubble>
             </FadeIn>
           </section>
 
@@ -265,76 +240,112 @@ const EchooShowcaseV2: React.FC = () => {
               <h2 className="text-[16px] md:text-[20px] text-[#1D1D1D] mb-[16px] underline font-medium">Technical Decisions</h2>
 
               {/* Question Row */}
-              <div className="flex items-start gap-[8px] md:gap-[16px] mb-[16px]">
-                <img src="/showcase/echoo/header.png" alt="Question Icon" className="w-8 h-8 shrink-0" />
-                <p
-                  className="text-[16px] md:text-[20px] leading-[22px] md:leading-[26px] text-[#1D1D1D] font-medium"
-                >
-                  What technical decisions did you make? and why?
-                </p>
-              </div>
+              <QuestionBubble text="What technical decisions did you make? and why?" />
 
               {/* Answer Row */}
-              <div className="flex items-start gap-[8px] md:gap-[16px]">
-                <img
-                  src="/showcase/echoo/echoo_favicon.png"
-                  alt="Echoo Favicon"
-                  className="w-[24px] h-[24px] md:w-[32px] md:h-[32px] shrink-0"
-                />
-                <div className="flex-1">
-                  <div className="text-[16px] md:text-[20px] leading-[22px] md:leading-[26px] text-[#575757] mb-[16px] font-medium">
-                    <p className="mb-2">Three big decisions shaped the whole thing.</p>
-                    <ul className="list-disc list-inside space-y-1 ml-2">
-                      <li>Zero‑Latency Feed: Batch‑prefetch + client‑side dedup → 60fps swipe UX, no loading skeletons</li>
-                      <li>Stateless Privacy: No user database, just RLS rules → Truly anonymous, even if hacked</li>
-                      <li>Cost‑Optimized: Database‑side logic consolidation → $0 fixed cost, scales thousands concurrent</li>
-                    </ul>
-                  </div>
-                  <div className="space-y-2">
-                    <ShowcaseToggleV2 title="Decision 1: UX Logic - How Batch-prefetching eliminates Loading Skeletons for 60fps swipe">
-                      <div className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px] text-[#575757] font-[500]">
-                        Why it matters: Users see loading = they bounce <br />
-                        My approach: Instead of "scroll → wait → load → show" <br />
-                        Do this: "Prefetch next 9 posts while reading current"<br />
-                        How:<br />
-                        <ul className="list-disc pl-5 mt-2 mb-2">
-                          <li>Client sends: "I've already seen these posts [uuid1, uuid2...]"</li>
-                          <li>Server sends back: Only new ones</li>
-                          <li>Result: Instant content, 60fps swipe (tested on entry-level phones)</li>
-                        </ul>
-                        Trade-off: Need to manage prefetch timing (don't prefetch too early)
-                      </div>
-                    </ShowcaseToggleV2>
-                    <ShowcaseToggleV2 title="Decision 2: Security - Implementing a 'Database-less' Identity model via Supabase RLS">
-                      <div className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px] text-[#575757] font-[500]">
-                        Why it matters: Anonymous platforms need real security <br />
-                        Traditional approach: Store user profiles → encryption → hope it works <br />
-                        My approach: Don't store user profiles at all <br />
-                        How:<br />
-                        <ul className="list-disc pl-5 mt-2 mb-2">
-                          <li>Identity lives in browser (localStorage)</li>
-                          <li>Server never sees it</li>
-                          <li>Supabase RLS enforces: "Anyone can read, but only post if they have local identity"</li>
-                        </ul>
-                        Even if hacker breaches frontend → database says "no" <br />
-                        Result: Truly anonymous. No user data to leak.
-                      </div>
-                    </ShowcaseToggleV2>
-                    <ShowcaseToggleV2 title="Decision 3: Efficiency - Reducing data payload by 70% using Database-level filtering (RPC)">
-                      <div className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px] text-[#575757] font-[500]">
-                        Why it matters: Bandwidth = battery life on mobile <br />
-                        Bad approach: Fetch all confessions → filter on phone Problem: Huge payload, slow, drains battery <br />
-                        Good approach: Push filtering to database (PostgreSQL RPC) <br />
-                        <ul className="list-disc pl-5 mt-2 mb-2">
-                          <li>Server does: Filter seen-IDs, rank by Ladder Rule</li>
-                          <li>Client gets: Only relevant posts</li>
-                        </ul>
-                        Result: 70% smaller payload. Scales infinite. Saves battery.
-                      </div>
-                    </ShowcaseToggleV2>
-                  </div>
+              <AnswerBubble>
+                <div className="text-[16px] md:text-[20px] leading-[22px] md:leading-[26px] text-[#575757] mb-[16px] font-medium">
+                  <p className="mb-2">Three big decisions shaped the whole thing.</p>
+                  <ul className="list-disc list-inside space-y-1 ml-2">
+                    <li>Zero‑Latency Feed: Batch‑prefetch + client‑side dedup → 60fps swipe UX, no loading skeletons</li>
+                    <li>Stateless Privacy: No user database, just RLS rules → Truly anonymous, even if hacked</li>
+                    <li>Cost‑Optimized: Database‑side logic consolidation → $0 fixed cost, scales thousands concurrent</li>
+                  </ul>
+                  <img src="/showcase/echoo/Three big decisions.png" className="w-full md:w-[500px] h-auto mt-4 mb-2 rounded-[16px]" alt="Three big decisions" />
                 </div>
-              </div>
+                <div className="space-y-2">
+                  <ShowcaseToggleV2 title="3 Important Decision">
+                    <div className="flex flex-col md:flex-row gap-[8px] w-full pt-2">
+                      {/* CARD 1: Decision 3 */}
+                      <div className="w-full md:w-[calc((100%-16px)/3)]">
+                        <ShowcaseCard
+                          title="Decision 3"
+                          description="Efficiency - Reducing data payload by 70% using Database-level filtering (RPC)"
+                          headerBgColor="#EAEAEA"
+                          sections={[
+                            {
+                              heading: "Why it matters:",
+                              content: "Bandwidth = battery life on mobile"
+                            },
+                            {
+                              heading: "Bad approach:",
+                              content: "Fetch all confessions → filter on phone Problem: Huge payload, slow, drains battery"
+                            },
+                            {
+                              heading: "Good approach:",
+                              content: (
+                                <>
+                                  Push filtering to database (PostgreSQL RPC)
+                                  <ul className="list-disc pl-5 mt-1">
+                                    <li>Server does: Filter seen-IDs, rank by Ladder Rule</li>
+                                    <li>Client gets: Only relevant posts</li>
+                                  </ul>
+                                </>
+                              )
+                            },
+                            {
+                              heading: "Result:",
+                              content: "Truly anonymous. No user data to leak."
+                            }
+                          ]}
+                        />
+                      </div>
+
+                      {/* CARD 2: Decision 2 */}
+                      <div className="w-full md:w-[calc((100%-16px)/3)]">
+                        <ShowcaseCard
+                          title="Decision 2:"
+                          description="Security - Implementing a &quot;Database-less&quot; Identity model via Supabase RLS"
+                          headerBgColor="#F9F2F6"
+                          headerTextColor="#A020F0"
+                          sections={[
+                            {
+                              heading: "Why it matters:",
+                              content: "Anonymous platforms need real security"
+                            },
+                            {
+                              heading: "Traditional approach:",
+                              content: "Store user profiles → encryption → hope it works"
+                            },
+                            {
+                              heading: "My approach:",
+                              content: "Don't store user profiles at all"
+                            },
+                            {
+                              heading: "Result:",
+                              content: "Truly anonymous. No user data to leak."
+                            }
+                          ]}
+                        />
+                      </div>
+
+                      {/* CARD 3: Decision 1 */}
+                      <div className="w-full md:w-[calc((100%-16px)/3)]">
+                        <ShowcaseCard
+                          title="Decision 1:"
+                          description="How Batch-prefetching eliminates Loading Skeletons for 60fps swipe"
+                          headerBgColor="#F0F8FF"
+                          headerTextColor="#0360FF"
+                          sections={[
+                            {
+                              heading: "Why it matters",
+                              content: "Users see loading = they bounce"
+                            },
+                            {
+                              heading: "My approach:",
+                              content: "Instead of \"scroll → wait → load → show\" Do this: \"Prefetch next 9 posts while reading current\""
+                            },
+                            {
+                              heading: "Trade-off:",
+                              content: "Need to manage prefetch timing (don't prefetch too early)"
+                            }
+                          ]}
+                        />
+                      </div>
+                    </div>
+                  </ShowcaseToggleV2>
+                </div>
+              </AnswerBubble>
             </FadeIn>
           </section>
 
@@ -344,107 +355,96 @@ const EchooShowcaseV2: React.FC = () => {
               <h2 className="text-[16px] md:text-[20px] text-[#1D1D1D] mb-[16px] underline font-medium">Product Strategy</h2>
 
               {/* Question Row */}
-              <div className="flex items-start gap-[8px] md:gap-[16px] mb-[16px]">
-                <img src="/showcase/echoo/header.png" alt="Question Icon" className="w-8 h-8 shrink-0" />
-                <p className="text-[16px] md:text-[20px] leading-[22px] md:leading-[26px] text-[#1D1D1D] font-medium">
-                  How did you approach product decisions? What's your philosophy?
-                </p>
-              </div>
+              <QuestionBubble text="How did you approach product decisions? What's your philosophy?" />
 
               {/* Answer Row */}
-              <div className="flex items-start gap-[8px] md:gap-[16px]">
-                <img
-                  src="/showcase/echoo/echoo_favicon.png"
-                  alt="Echoo Favicon"
-                  className="w-[24px] h-[24px] md:w-[32px] md:h-[32px] shrink-0"
-                />
-                <div className="flex-1">
-                  <div className="text-[16px] md:text-[20px] leading-[22px] md:leading-[26px] text-[#575757] mb-[16px] font-medium">
-                    <p className="mb-2">I made 1 core choice: Positioning first, everything else follows.</p>
-                    <p className="mb-2">"Echoo = \"emotional outlet\", not \"drama forum\""</p>
-                    <p className="mb-2">This decision ripples through:</p>
-                    <ul className="list-disc list-inside space-y-1 ml-2">
-                      <li>No comments (prevents toxic threads)</li>
-                      <li>Contribution Barrier (filters quality)</li>
-                      <li>Ladder Rule (fair visibility, not viral)</li>
-                    </ul>
-                    <p className="mt-4">Every design choice reinforces the same positioning.</p>
-                  </div>
-
-                  <div className="space-y-2">
-                    <ShowcaseToggleV2 title="The Paradox: Why disabling comments is the only way to kill Toxicity & Bots">
-                      <div className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px] text-[#575757] font-[500]">
-                        The Paradox: <br />
-                        Traditional social platforms optimize for "engagement" (likes, comments, views). More engagement = more visible.<br />
-                        But this creates toxicity:<br />
-                        <ul className="list-disc pl-5 mt-2 mb-4">
-                          <li>Controversial confessions go viral</li>
-                          <li>Comments on secrets = judgment</li>
-                          <li>Users regret sharing</li>
-                        </ul>
-                        Why can't Echoo do the same? If Echoo chases engagement metrics, it becomes Reddit/Whisper = I lose.<br /> <br />
-
-                        The Bold Decision: <br />
-                        Remove comments entirely. Keep only reactions (❤️ 🔄).<br />
-                        Why this works:<br />
-                        <ul className="list-disc pl-5 mt-2 mb-4">
-                          <li>User feels validated by hearts (50 people liked my confession)</li>
-                          <li>No fear of being attacked in comments</li>
-                          <li>No moderation nightmare</li>
-                        </ul>
-
-                        Psychology shift: <br />
-                        Comments are for debate ("Why did you do that?") Reactions are for support ("You're not alone")<br />
-                        Echoo = support platform. <br /><br />
-
-                        To prevent bots (since no comments = less engagement): Contribution Barrier: Must post 1 confession to unlock reactions <br />
-                        Why this works for anti-spam: <br />
-                        <ul className="list-disc pl-5 mt-2 mb-4">
-                          <li>Bots won't craft realistic confessions (too expensive)</li>
-                          <li>Real users become stakeholders (they posted)</li>
-                          <li>100% bot elimination, $0 cost (no NLP filters)</li>
-                        </ul>
-
-                        Trade-off: <br />
-                        <ul className="list-disc pl-5 mt-2">
-                          <li>High friction kills 60% casual visitors</li>
-                          <li>But remaining users are much higher quality</li>
-                          <li>Proof: 1 user posted despite friction = concept works</li>
-                        </ul>
-                      </div>
-                    </ShowcaseToggleV2>
-                    <ShowcaseToggleV2 title="Content Engineering: Scaling deep confessions via an AI-Assisted Pipeline">
-                      <div className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px] text-[#575757] font-[500]">
-                        The Dilemma: <br />
-                        Option A: Reddit-style light topics "What's your favorite memory?" "Valentine plans?" <br />
-                        <ul className="list-disc pl-5 mt-2 mb-4">
-                          <li>Pros: Easy to find content on Reddit</li>
-                          <li>Cons: Kills emotional outlet positioning</li>
-                          <li>Result: Becomes Reddit clone (lose)</li>
-                        </ul>
-
-                        Option B: Confession-style deep topics "A secret I've never told anyone" "Guilt I carry" <br />
-                        <ul className="list-disc pl-5 mt-2 mb-4">
-                          <li>Pros: Reinforces emotional outlet positioning</li>
-                          <li>Cons: Hard to find/create content</li>
-                          <li>Result: Stays true to positioning (win)</li>
-                        </ul>
-
-                        Decision: Option B (harder but right) <br /><br />
-
-                        How I solve "hard to find content": AI-Assisted Content Pipeline: <br />
-                        <ul className="list-disc pl-5 mt-2">
-                          <li>Gemini: Generate confession topics</li>
-                          <li>Claude: Write confessions (match anonymity voice)</li>
-                          <li>Manual review: Ensure quality</li>
-                        </ul>
-                        <br />
-                        Result: 50-100 quality confessions/week without manual labor
-                      </div>
-                    </ShowcaseToggleV2>
-                  </div>
+              <AnswerBubble>
+                <div className="text-[16px] md:text-[20px] leading-[22px] md:leading-[24px] text-[#575757] mb-[16px] font-medium">
+                  <p className="mb-2">I made 1 core choice: Positioning first, everything else follows.</p>
+                  <p className="mb-2">"Echoo = \"emotional outlet\", not \"drama forum\""</p>
+                  <p className="mb-2">This decision ripples through:</p>
+                  <ul className="list-disc list-inside space-y-1 ml-2">
+                    <li>No comments (prevents toxic threads)</li>
+                    <li>Contribution Barrier (filters quality)</li>
+                    <li>Ladder Rule (fair visibility, not viral)</li>
+                  </ul>
+                  <p className="mt-4">Every design choice reinforces the same positioning.</p>
+                  <img src="/showcase/echoo/position_first.png" className="w-full md:w-[500px] h-auto mt-4 mb-2 rounded-[16px]" alt="Position First" />
                 </div>
-              </div>
+
+                <div className="space-y-2">
+                  <ShowcaseToggleV2 title="The Paradox: Why disabling comments is the only way to kill Toxicity & Bots">
+                    <div className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px] text-[#575757] font-[500]">
+                      The Paradox: <br />
+                      Traditional social platforms optimize for "engagement" (likes, comments, views). More engagement = more visible.<br />
+                      But this creates toxicity:<br />
+                      <ul className="list-disc pl-5 mt-2 mb-4">
+                        <li>Controversial confessions go viral</li>
+                        <li>Comments on secrets = judgment</li>
+                        <li>Users regret sharing</li>
+                      </ul>
+                      Why can't Echoo do the same? If Echoo chases engagement metrics, it becomes Reddit/Whisper = I lose.<br /> <br />
+
+                      The Bold Decision: <br />
+                      Remove comments entirely. Keep only reactions (❤️ 🔄).<br />
+                      Why this works:<br />
+                      <ul className="list-disc pl-5 mt-2 mb-4">
+                        <li>User feels validated by hearts (50 people liked my confession)</li>
+                        <li>No fear of being attacked in comments</li>
+                        <li>No moderation nightmare</li>
+                      </ul>
+
+                      Psychology shift: <br />
+                      Comments are for debate ("Why did you do that?") Reactions are for support ("You're not alone")<br />
+                      Echoo = support platform. <br /><br />
+
+                      To prevent bots (since no comments = less engagement): Contribution Barrier: Must post 1 confession to unlock reactions <br />
+                      Why this works for anti-spam: <br />
+                      <ul className="list-disc pl-5 mt-2 mb-4">
+                        <li>Bots won't craft realistic confessions (too expensive)</li>
+                        <li>Real users become stakeholders (they posted)</li>
+                        <li>100% bot elimination, $0 cost (no NLP filters)</li>
+                      </ul>
+
+                      Trade-off: <br />
+                      <ul className="list-disc pl-5 mt-2">
+                        <li>High friction kills 60% casual visitors</li>
+                        <li>But remaining users are much higher quality</li>
+                        <li>Proof: 1 user posted despite friction = concept works</li>
+                      </ul>
+                    </div>
+                  </ShowcaseToggleV2>
+                  <ShowcaseToggleV2 title="Content Engineering: Scaling deep confessions via an AI-Assisted Pipeline">
+                    <div className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px] text-[#575757] font-[500]">
+                      The Dilemma: <br />
+                      Option A: Reddit-style light topics "What's your favorite memory?" "Valentine plans?" <br />
+                      <ul className="list-disc pl-5 mt-2 mb-4">
+                        <li>Pros: Easy to find content on Reddit</li>
+                        <li>Cons: Kills emotional outlet positioning</li>
+                        <li>Result: Becomes Reddit clone (lose)</li>
+                      </ul>
+
+                      Option B: Confession-style deep topics "A secret I've never told anyone" "Guilt I carry" <br />
+                      <ul className="list-disc pl-5 mt-2 mb-4">
+                        <li>Pros: Reinforces emotional outlet positioning</li>
+                        <li>Cons: Hard to find/create content</li>
+                        <li>Result: Stays true to positioning (win)</li>
+                      </ul>
+
+                      Decision: Option B (harder but right) <br /><br />
+
+                      How I solve "hard to find content": AI-Assisted Content Pipeline: <br />
+                      <ul className="list-disc pl-5 mt-2">
+                        <li>Gemini: Generate confession topics</li>
+                        <li>Claude: Write confessions (match anonymity voice)</li>
+                        <li>Manual review: Ensure quality</li>
+                      </ul>
+                      <br />
+                      Result: 50-100 quality confessions/week without manual labor
+                    </div>
+                  </ShowcaseToggleV2>
+                </div>
+              </AnswerBubble>
             </FadeIn>
           </section>
 
@@ -454,86 +454,157 @@ const EchooShowcaseV2: React.FC = () => {
               <h2 className="text-[16px] md:text-[20px] text-[#1D1D1D] mb-[16px] underline font-medium">Trade-off</h2>
 
               {/* Question Row */}
-              <div className="flex items-start gap-[8px] md:gap-[16px] mb-[16px]">
-                <img src="/showcase/echoo/header.png" alt="Question Icon" className="w-8 h-8 shrink-0" />
-                <p className="text-[16px] md:text-[20px] leading-[22px] md:leading-[26px] text-[#1D1D1D] font-medium">
-                  What are the trade-offs? What breaks if things get bigger?
-                </p>
-              </div>
+              <QuestionBubble text="What are the trade-offs? What breaks if things get bigger?" />
 
               {/* Answer Row */}
-              <div className="flex items-start gap-[8px] md:gap-[16px]">
-                <img
-                  src="/showcase/echoo/echoo_favicon.png"
-                  alt="Echoo Favicon"
-                  className="w-[24px] h-[24px] md:w-[32px] md:h-[32px] shrink-0"
-                />
-                <div className="flex-1">
-                  <div className="text-[16px] md:text-[20px] leading-[22px] md:leading-[26px] text-[#575757] mb-[16px] font-medium">
-                    <p className="mb-2">3 major trade-offs exist. I chose to accept them:</p>
-                    <ul className="list-disc list-inside space-y-1 ml-2">
-                      <li>Content Exhaustion: Users see \"End Card\" quickly (because Seen-ID blocks old posts) → Solved by: Constant content seeding</li>
-                      <li>Conversion Hit: High friction kills casual users → Accepted because: Remaining users are higher quality</li>
-                      <li>Scaling Costs: $0 now, but paid tier needed at 10K+ users → Plan: Bootstrap revenue before costs hit</li>
-                    </ul>
-                  </div>
-
-                  <div className="space-y-2">
-                    <ShowcaseToggleV2 title="Trade-off 1: Content Exhaustion">
-                      <div className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px] text-[#575757] font-[500]">
-                        The Problem: <br />
-                        Seen-ID system blocks old posts once you've read them. <br />
-                        If new/hot posts don't flow in constantly → User hits "End Card" fast. <br />
-                        <br />
-                        Why this matters: <br />
-                        User thinks: "No new content" → bounce <br />
-                        <br />
-                        My solution: <br />
-                        <ul className="list-disc pl-5 mt-2 mb-2">
-                          <li>Content seeding pipeline (50-100/week guaranteed)</li>
-                          <li>Keep feed always fresh</li>
-                        </ul>
-                        <br />
-                        If this breaks: Need to increase content production <br />
-                        Or: Allow users to "reset" their feed (see older posts again)
-                      </div>
-                    </ShowcaseToggleV2>
-                    <ShowcaseToggleV2 title="Trade-off 2: Conversion Sacrifice">
-                      <div className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px] text-[#575757] font-[500]">
-                        The Problem: Contribution Barrier = high friction "Want to like? First, post a confession" <br />
-                        Consequence: <br />
-                        <ul className="list-disc pl-5 mt-2 mb-4">
-                          <li>Day-1: 1000 visits</li>
-                          <li>Can see confessions: 1000 people</li>
-                          <li>Can post: 1000 people</li>
-                          <li>Click "Like": 1000 people ready to post</li>
-                          <li>Actually post: ~400 people (60% bounce)</li>
-                          <li>Now can react forever: 400 people (quality subset)</li>
-                        </ul>
-                        Why I accept this: 400 engaged users &gt; 1000 casual users Retention curves will prove this <br />
-                        If this breaks: A/B test: Frictionless version vs current Measure Day-7 retention → see which wins.
-                      </div>
-                    </ShowcaseToggleV2>
-                    <ShowcaseToggleV2 title="Trade-off 3: Cost at Scale">
-                      <div className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px] text-[#575757] font-[500]">
-                        Current: $0/month (serverless free tiers) <br />
-                        At 10K users: <br />
-                        <ul className="list-disc pl-5 mt-2 mb-4">
-                          <li>Supabase storage → paid tier (~$25-50/mo)</li>
-                          <li>Vercel bandwidth → still free (generous limits)</li>
-                          <li>Identity lives in browser (localStorage)</li>
-                        </ul>
-                        At 100K users:<br />
-                        <ul className="list-disc pl-5 mt-2 mb-4">
-                          <li>Infrastructure costs rise</li>
-                        </ul>
-                        My plan: Don't scale beyond free tier unless revenue exists Bootstrap revenue (ads? premium? donations?) Before costs become problem. <br />
-                        Philosophy: Design for $0 first. Optimize costs only when revenue exists.
-                      </div>
-                    </ShowcaseToggleV2>
+              <AnswerBubble>
+                <div className="text-[16px] md:text-[20px] leading-[22px] md:leading-[26px] text-[#575757] mb-[16px] font-medium">
+                  <p className="mb-2">3 major trade-offs exist. I chose to accept them:</p>
+                  <div className="w-full rounded-[16px] overflow-hidden border border-[#D3D3D3] mt-4 mb-2">
+                    <table className="w-full border-collapse table-fixed">
+                      <tbody>
+                        <tr className="border-b border-[#D3D3D3]">
+                          <td className="w-[35%] p-2 md:p-4 text-[14px] md:text-[18px] leading-[18px] md:leading-[24px] font-[500] text-[#212121] border-r border-[#D3D3D3] align-top break-words">
+                            Content Exhaustion
+                          </td>
+                          <td className="w-[65%] p-2 md:p-4 text-[14px] md:text-[18px] leading-[18px] md:leading-[24px] font-[400] text-[#575757] align-top">
+                            Users see "End Card" quickly (because Seen-ID blocks old posts)<br />
+                            → Solved by: Constant content seeding
+                          </td>
+                        </tr>
+                        <tr className="border-b border-[#D3D3D3]">
+                          <td className="w-[35%] p-2 md:p-4 text-[14px] md:text-[18px] leading-[18px] md:leading-[24px] font-[500] text-[#212121] border-r border-[#D3D3D3] align-top break-words">
+                            Conversion Hit
+                          </td>
+                          <td className="w-[65%] p-2 md:p-4 text-[14px] md:text-[18px] leading-[18px] md:leading-[24px] font-[400] text-[#575757] align-top">
+                            High friction kills casual users → Accepted because: Remaining users are higher quality
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="w-[35%] p-2 md:p-4 text-[14px] md:text-[18px] leading-[18px] md:leading-[24px] font-[500] text-[#212121] border-r border-[#D3D3D3] align-top break-words">
+                            Scaling Costs
+                          </td>
+                          <td className="w-[65%] p-2 md:p-4 text-[14px] md:text-[18px] leading-[18px] md:leading-[24px] font-[400] text-[#575757] align-top">
+                            $0 now, but paid tier needed at 10K+ users → Plan: Bootstrap revenue before costs hit
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
-              </div>
+
+                <div className="space-y-2">
+                  <ShowcaseToggleV2 title="Three Important Trade-off">
+                    <div className="flex flex-col md:flex-row gap-[8px] w-full pt-2">
+                      <div className="w-full md:w-[calc((100%-16px)/3)]">
+                        <ShowcaseCard
+                          title="Trade-off 1"
+                          description="Content Exhaustion"
+                          headerBgColor="#EAEAEA"
+                          sections={[
+                            {
+                              heading: "The Problem:",
+                              content: "Seen-ID system blocks old posts once you've read them. If new/hot posts don't flow in constantly → User hits \"End Card\" fast."
+                            },
+                            {
+                              heading: "Why this matters:",
+                              content: "User thinks: \"No new content\" → bounce"
+                            },
+                            {
+                              heading: "My solution:",
+                              content: (
+                                <ul className="list-disc pl-5 mt-1">
+                                  <li>Content seeding pipeline (50-100/week guaranteed)</li>
+                                  <li>Keep feed always fresh</li>
+                                </ul>
+                              )
+                            },
+                            {
+                              heading: "If this breaks:",
+                              content: "Need to increase content production Or: Allow users to \"reset\" their feed (see older posts again)"
+                            }
+                          ]}
+                        />
+                      </div>
+                      <div className="w-full md:w-[calc((100%-16px)/3)]">
+                        <ShowcaseCard
+                          title="Trade-off 2"
+                          description="Conversion Sacrifice"
+                          headerBgColor="#F9F2F6"
+                          headerTextColor="#A020F0"
+                          sections={[
+                            {
+                              heading: "The Problem:",
+                              content: "Contribution Barrier = high friction \"Want to like? First, post a confession\""
+                            },
+                            {
+                              heading: "Consequence:",
+                              content: (
+                                <ul className="list-disc pl-5 mt-1">
+                                  <li>Day-1: 1000 visits</li>
+                                  <li>Can see confessions: 1000 people</li>
+                                  <li>Can post: 1000 people</li>
+                                  <li>Click \"Like\": 1000 people ready to post</li>
+                                  <li>Actually post: ~400 people (60% bounce)</li>
+                                  <li>Now can react forever: 400 people (quality subset)</li>
+                                </ul>
+                              )
+                            },
+                            {
+                              heading: "Why I accept this:",
+                              content: "400 engaged users > 1000 casual users Retention curves will prove this"
+                            },
+                            {
+                              heading: "If this breaks:",
+                              content: "A/B test: Frictionless version vs current Measure Day-7 retention → see which wins."
+                            }
+                          ]}
+                        />
+                      </div>
+                      <div className="w-full md:w-[calc((100%-16px)/3)]">
+                        <ShowcaseCard
+                          title="Trade-off 3"
+                          description="Cost at Scale"
+                          headerBgColor="#F0F8FF"
+                          headerTextColor="#0360FF"
+                          sections={[
+                            {
+                              heading: "Current:",
+                              content: "$0/month (serverless free tiers)"
+                            },
+                            {
+                              heading: "At 10K users:",
+                              content: (
+                                <ul className="list-disc pl-5 mt-1">
+                                  <li>Supabase storage → paid tier (~$25-50/mo)</li>
+                                  <li>Vercel bandwidth → still free (generous limits)</li>
+                                  <li>Identity lives in browser (localStorage)</li>
+                                </ul>
+                              )
+                            },
+                            {
+                              heading: "At 100K users:",
+                              content: (
+                                <ul className="list-disc pl-5 mt-1">
+                                  <li>Infrastructure costs rise</li>
+                                </ul>
+                              )
+                            },
+                            {
+                              heading: "My plan:",
+                              content: "Don't scale beyond free tier unless revenue exists Bootstrap revenue (ads? premium? donations?) Before costs become problem."
+                            },
+                            {
+                              heading: "Philosophy:",
+                              content: "Design for $0 first. Optimize costs only when revenue exists."
+                            }
+                          ]}
+                        />
+                      </div>
+                    </div>
+                  </ShowcaseToggleV2>
+                </div>
+              </AnswerBubble>
             </FadeIn>
           </section>
 
@@ -543,130 +614,81 @@ const EchooShowcaseV2: React.FC = () => {
               <h2 className="text-[16px] md:text-[20px] text-[#1D1D1D] mb-[16px] underline font-medium">The Pivot & Lessons</h2>
 
               {/* Question Row */}
-              <div className="flex items-start gap-[8px] md:gap-[16px] mb-[16px]">
-                <img src="/showcase/echoo/header.png" alt="Question Icon" className="w-8 h-8 shrink-0" />
-                <p className="text-[16px] md:text-[20px] leading-[22px] md:leading-[26px] text-[#1D1D1D] font-medium">
-                  What’s the current status? What did you learn?
-                </p>
-              </div>
+              <QuestionBubble text="What’s the current status? What did you learn?" />
 
               {/* Answer Row */}
-              <div className="flex items-start gap-[8px] md:gap-[16px]">
-                <img
-                  src="/showcase/echoo/echoo_favicon.png"
-                  alt="Echoo Favicon"
-                  className="w-[24px] h-[24px] md:w-[32px] md:h-[32px] shrink-0"
-                />
-                <div className="flex-1">
-                  <div className="text-[16px] leading-[22px] md:text-[20px] md:leading-[26px] text-[#575757] font-[500] mb-[16px]">
-                    Phase 1 (Now): Validation <br />
-                    <ul className="list-disc pl-5 mt-2 mb-4">
-                      <li>33 views, 6 clicked confession, 1 posted</li>
-                      <li>Proves: Friction-driven quality works ✓</li>
-                      <li>Bottleneck: Need more traffic to measure real metrics</li>
-                    </ul>
-                    <br />
-                    Phase 2 (Next 4 weeks): <br />
-                    <ul className="list-disc pl-5 mt-2 mb-4">
-                      <li>Content seeding: 50-100 confessions (AI pipeline)</li>
-                      <li>Marketing: paid traffic (Reddit / Tiktok)</li>
-                      <li>Once at 1000+ users: Measure retention curves</li>
-                    </ul>
-                    <br />
-                    4 Failed Products Taught Me: <br />
-                    <ul className="list-disc pl-5 mt-2">
-                      <li>Problem framing matters (don't build without validation)</li>
-                      <li>Clear positioning &gt; feature list</li>
-                      <li>Values-driven &gt; metric-driven</li>
-                      <li>UX-first &gt; tech-first</li>
-                    </ul>
+              <AnswerBubble>
+                <div className="mb-[16px]">
+                  <h3 className="text-[24px] font-[600] text-[#212121] mb-6">Metrics & Learnings</h3>
+                  
+                  <div className="mb-[8px] text-[16px] md:text-[20px] font-[600] text-[#212121]">After 3 months:</div>
+                  <div className="flex flex-col md:flex-row gap-[8px] w-full mb-8">
+                    <div className="w-full md:w-[calc((100%-8px)/2)] [&>div]:!h-[150px] md:[&>div]:!h-[200px]">
+                      <ShowcaseMetricCard 
+                        icon={<Activity className="w-[32px] h-[32px] text-white" strokeWidth={1.5} />}
+                        content={<div className="font-[500]"><strong className="font-[600]">920 app opens</strong> = repeat<br/>engagement</div>}
+                      />
+                    </div>
+                    <div className="w-full md:w-[calc((100%-8px)/2)] [&>div]:!h-[150px] md:[&>div]:!h-[200px]">
+                      <ShowcaseMetricCard 
+                        icon={<Send className="w-[32px] h-[32px] text-white" strokeWidth={1.5} />}
+                        content={<div className="font-[500]"><strong className="font-[600]">8.3% submission<br/>rate (64/761)</strong> = high-friction<br/>positioning works</div>}
+                      />
+                    </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <ShowcaseToggleV2 title="Phase 1: What 33 Users Told Me">
-                      <div className="font-medium whitespace-pre-line text-[16px] leading-[22px] md:text-[16px] md:leading-[22px] text-[#575757]">
-                        Metrics: 33 views → 6 clicked → 1 posted<br /><br />
-                        What it proves:<br />
-                        ✓ At least 1 person believed in concept<br />
-                        ✓ That person invested effort (wrote confession)<br />
-                        ✓ Despite high friction (must post to unlock)<br /><br />
-                        Hypothesis: \"Contribution Barrier works\" = VALIDATED<br />
-                        What I can't measure yet:<br />
-                        ✗ Retention (need 100+ users with activity)<br />
-                        ✗ Repeat posting (need cohort data)<br />
-                        ✗ Algorithm effectiveness (need engagement signal)<br /><br />
-                        So next: Scale to 1000+ users, then optimize
-                      </div>
-                    </ShowcaseToggleV2>
-                    <ShowcaseToggleV2 title="Competitive Context: Reddit vs Whisper">
-                      <div className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px] text-[#575757] font-[500]">
-                        Reddit: <br />
-                        <ul className="list-disc pl-5 mt-1 mb-4">
-                          <li>Strength: Discussion, community Q&A</li>
-                          <li>Weakness: Comments enable flame wars on sensitive topics</li>
-                          <li>Strategy: Engagement-first, toxicity is accepted cost</li>
-                        </ul>
-                        Whisper:<br />
-                        <ul className="list-disc pl-5 mt-1 mb-4">
-                          <li>Strength: Anonymous, viral confessions</li>
-                          <li>Weakness: Algorithm makes controversial = viral = toxic</li>
-                          <li>Strategy: Engagement-first (like Reddit)</li>
-                        </ul>
-                        Echoo:<br />
-                        <ul className="list-disc pl-5 mt-1">
-                          <li>Strength: Emotional outlet (safety first)</li>
-                          <li>Weakness: Harder to acquire users (no engagement loop)</li>
-                          <li>Strategy: Quality first (accept lower growth rate)</li>
-                        </ul>
-                      </div>
-                    </ShowcaseToggleV2>
-                    <ShowcaseToggleV2 title="4 Failed Products → Echoo Lessons">
-                      <div className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px] text-[#575757] font-[500]">
-                        Product 1: Failed <br />
-                        Lesson: Built without understanding user problem <br />
-                        → Echoo: Started with "Why do people need anonymous platforms?" <br />
-                        <br />
-                        Product 2: Failed <br />
-                        Lesson: Too many features, no clear positioning <br />
-                        → Echoo: One positioning ("emotional outlet"), everything else serves it <br />
-                        <br />
-                        Product 3: Failed <br />
-                        Lesson: Chased engagement metrics (like everyone) <br />
-                        → Echoo: Chase retention metrics + user safety instead <br />
-                        <br />
-                        Product 4: Failed <br />
-                        Lesson: Technical solution first (tech tail wagging design dog) <br />
-                        → Echoo: UX first (60fps matters), tech supports it <br />
-                        <br />
-                        Pattern: Each failure taught what to avoid <br />
-                        Echoo incorporates all 4 learnings
-                      </div>
-                    </ShowcaseToggleV2>
-                    <ShowcaseToggleV2 title="The Cost Breakdown: How I Built $0 MVP">
-                      <div className="text-[14px] leading-[22px] md:text-[16px] md:leading-[24px] text-[#575757] font-[500]">
-                        Development: <br />
-                        <ul className="list-disc pl-5 mt-1 mb-4">
-                          <li>AI Studio (Gemini): $0</li>
-                          <li>Cursor (IDE): $20</li>
-                          <li>ChatGPT (assistance): $5</li>
-                        </ul>
-                        Infrastructure: <br />
-                        <ul className="list-disc pl-5 mt-1 mb-4">
-                          <li>Supabase (database): $0 (free tier)</li>
-                          <li>Vercel (hosting): $0 (free tier)</li>
-                          <li>Domain (Godaddy): $2</li>
-                        </ul>
-                        Marketing: <br />
-                        <ul className="list-disc pl-5 mt-1 mb-4">
-                          <li>Initial content creation: $20</li>
-                        </ul>
-                        Total: ~$47 <br />
-                        Philosophy: Don't invest money until product-market fit proven Design system for $0 cost, scale later if profitable
-                      </div>
-                    </ShowcaseToggleV2>
+                  <div className="mb-[8px] text-[16px] md:text-[20px] font-[600] text-[#212121]">What broke at growth:</div>
+                  <div className="text-[16px] md:text-[20px] font-[500] md:font-[400] leading-[22px] text-[#575757] mb-8">
+                    The core trade-off: Anonymous confessions need real human content to feel authentic. But seeding 50+ daily confessions solo = impossible.
+                  </div>
+
+                  <div className="mb-[8px] text-[16px] md:text-[20px] font-[600] text-[#212121]">The bottleneck:</div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-[8px] w-full mb-8 [&>div]:!h-[150px] md:[&>div]:!h-[200px]">
+                    <ShowcaseMetricCard 
+                      bgColor="#E43630"
+                      icon={<Bot className="w-[32px] h-[32px] text-white" strokeWidth={1.5} />}
+                      content={<div className="font-[500]">Al-written posts feel different<br/>(users notice after 20+ reads)</div>}
+                    />
+                    <ShowcaseMetricCard 
+                      bgColor="#E43630"
+                      icon={<AlertCircle className="w-[32px] h-[32px] text-white" strokeWidth={1.5} />}
+                      content={<div className="font-[500]">Real confessions are sparse,<br/>short, hard to moderate</div>}
+                    />
+                    <ShowcaseMetricCard 
+                      bgColor="#E43630"
+                      icon={<Users className="w-[32px] h-[32px] text-white" strokeWidth={1.5} />}
+                      content={<div className="font-[500]">Community building ≠ product<br/>building (needs dedicated team)</div>}
+                    />
+                  </div>
+
+                  <div className="mb-[8px] text-[16px] md:text-[20px] font-[600] text-[#212121]">What this taught me:</div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-[8px] w-full mb-8 [&>div]:!h-[150px] md:[&>div]:!h-[200px]">
+                    <ShowcaseMetricCard 
+                      bgColor="#F6F6F6"
+                      textColor="#212121"
+                      icon={<span className="text-[28px] font-[700] text-[#212121]">1</span>}
+                      content={<div className="font-[500]"><strong className="font-[600] text-[#212121]">Positioning is hard to execute</strong><br/><span className="text-[#575757]">→ Clear vision ≠ sustainable<br/>operation</span></div>}
+                    />
+                    <ShowcaseMetricCard 
+                      bgColor="#F6F6F6"
+                      textColor="#212121"
+                      icon={<span className="text-[28px] font-[700] text-[#212121]">2</span>}
+                      content={<div className="font-[500]"><strong className="font-[600] text-[#212121]">Content + community are<br/>separate skills</strong> <span className="text-[#575757]">→ Building<br/>product alone, managing<br/>community alone = two full-time<br/>jobs</span></div>}
+                    />
+                    <ShowcaseMetricCard 
+                      bgColor="#F6F6F6"
+                      textColor="#212121"
+                      icon={<span className="text-[28px] font-[700] text-[#212121]">3</span>}
+                      content={<div className="font-[500]"><strong className="font-[600] text-[#212121]">Authenticity scales with team,<br/>not features</strong> <span className="text-[#575757]">→ This needed a<br/>content strategist + moderator,<br/>not more engineering</span></div>}
+                    />
+                  </div>
+
+                  <div className="mb-[4px] text-[16px] md:text-[20px] font-[600] text-[#212121]">Current status:</div>
+                  <div className="text-[16px] md:text-[20px] font-[500] md:font-[400] leading-[22px] text-[#575757]">
+                    Echoo is archived, but the lessons shaped how I approach product design today.
                   </div>
                 </div>
-              </div>
+              </AnswerBubble>
             </FadeIn>
           </section>
 
@@ -751,4 +773,5 @@ const EchooShowcaseV2: React.FC = () => {
 };
 
 export default EchooShowcaseV2;
+
 

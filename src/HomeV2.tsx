@@ -82,15 +82,14 @@ export default function HomeV2() {
 
             <div className="space-y-[24px] flex flex-col">
               <p className="text-[20px] font-normal leading-[1.3] text-[#2A2A2A]">
-                Tôi là QuanTran, một Product Designer, chuyên về <span className="text-[#005EFF]">✹ Tư duy sản phẩm</span>, <span className="text-[#EA5B0E]">❂ Trải nghiệm tương tác</span> và <span className="text-[#D016CD]">✺ Xây dựng sản phẩm bằng AI</span>.
+                I am QuanTran, a Product Designer, specializing in <span className="text-[#005EFF]">✹ Product thinking</span>, <span className="text-[#EA5B0E]">❂ Interactive experience</span> và <span className="text-[#D016CD]">✺ Building products using AI</span>.
               </p>
 
               <div className="grid grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-[20px] font-normal text-[#7B7B7B] mb-4">Thiết kế</h3>
+                  <h3 className="text-[20px] font-normal text-[#7B7B7B] mb-4">Design</h3>
                   <ul className="text-[20px] font-normal leading-[1.3] text-[#2A2A2A] space-y-1">
-                    <li>Product design</li>
-                    <li>Tư duy thiết kế</li>
+                    <li>Product mindset</li>
                     <li>Figma</li>
                     <li>GSAP</li>
                     <li>Framer</li>
@@ -99,8 +98,9 @@ export default function HomeV2() {
                 <div>
                   <h3 className="text-[20px] font-normal text-[#7B7B7B] mb-4">Development</h3>
                   <ul className="text-[20px] font-normal leading-[1.3] text-[#2A2A2A] space-y-1">
-                    <li>Tư duy builder</li>
-                    <li>Vibecoder</li>
+                    <li>Developer mindset</li>
+                    <li>Vibecoding skill</li>
+                    <li>Understand CSS, HTML</li>
                   </ul>
                 </div>
               </div>
@@ -126,12 +126,12 @@ export default function HomeV2() {
               <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <section className="space-y-[24px]">
                   <ProjectItem
-                    title="Echoo - Nền tảng tâm sự ẩn danh: Tư duy sản phẩm trong thực tế – Thiết kế xoay quanh sự riêng tư và lòng tin."
+                    title="Echoo - An anonymous confession platform: Product thinking in practice – Design centered around privacy and trust."
                     videoSrc="/video/Echoo-nen.webm"
                     thumbnail="/video/Echoo-thumnail.png"
                   />
                   <ProjectItem
-                    title="GoodMotion - Nền tảng chia sẻ GSAP library cho Framer"
+                    title="GoodMotion - A platform for sharing GSAP libraries for Framer."
                     videoSrc="/video/Gsap.webm"
                     thumbnail="/video/GSAP-thumnail.png"
                   />
@@ -156,42 +156,42 @@ export default function HomeV2() {
                     <OtherProjectCard
                       title="KOC APP"
                       year="2023"
-                      description="Nền tảng kết nối người tiêu dùng có sức ảnh hưởng (Key Opinion Consumer) với các thương hiệu để review sản phẩm và kiếm tiền"
+                      description="The platform connects influential consumers (Key Opinion Consumers) with brands to review products and earn money."
                       logo="/other project/koc.png"
                       link={{ label: "Appstore", text: "Link", url: "https://apps.apple.com/vn/app/koc-review-l%C3%A0-c%C3%B3-ti%E1%BB%81n/id1551749090" }}
                     />
                     <OtherProjectCard
                       title="Titan Trading Platform"
                       year="2025"
-                      description="Nền tảng giao dịch tự động tích hợp trí tuệ nhân tạo (AI) ra mắt năm 2022, chuyên về xây dựng chiến lược giao dịch tài sản số"
+                      description="Launched in 2022, this AI-powered automated trading platform specializes in building trading strategies for digital assets."
                       logo="/other project/titan trading.png"
                       link={{ label: "Platform", text: "Link", url: "https://titantrading.io/" }}
                     />
                     <OtherProjectCard
                       title="Dimuadi"
                       year="2023"
-                      description="Ứng dụng/nền tảng bán hàng online không cần vốn, cung cấp nguồn hàng độc quyền, giá rẻ từ nhà máy, xưởng sản xuất cho đại lý và Cộng tác viên (CTV)"
+                      description="An online sales application/platform that requires no capital, providing exclusive, low-cost products directly from factories and manufacturers to distributors and collaborators."
                       logo="/other project/dimuadi.png"
                       link={{ label: "Platform", text: "Link", url: "https://dimuadi.com/" }}
                     />
                     <OtherProjectCard
                       title="Befitter platform"
                       year="2023"
-                      description="Ứng dụng di động theo mô hình Exercise-to-Earn (tập luyện để kiếm tiền) kết hợp giữa FitnessFi và SocialFi, giúp người dùng nhận phần thưởng tiền mã hóa"
+                      description="This mobile application, based on the Exercise-to-Earn model, combines FitnessFi and SocialFi, allowing users to receive cryptocurrency rewards."
                       logo="/other project/BEFITTER.png"
                       link={{ label: "Platform", text: "Project Archived" }}
                     />
                     <OtherProjectCard
                       title="DeFarm"
                       year="2024"
-                      description="Nền tảng Social Trading phi tập trung, được xây dựng trên mạng lưới Arbitrum. Nền tảng này kết nối các nhà đầu tư và các nhà quản lý quỹ/trader có kinh nghiệm thông qua smart contract"
+                      description="A decentralized social trading platform built on the Arbitrum network. This platform connects investors and experienced fund managers/traders through smart contracts."
                       logo="/other project/defarm.png"
                       link={{ label: "Platform", text: "Project Archived" }}
                     />
                     <OtherProjectCard
                       title="Chozoi"
                       year="2023"
-                      description="Sàn thương mại điện tử (e-commerce) tại Việt Nam, nổi bật với mô hình đấu giá trực tuyến"
+                      description="E-commerce platforms in Vietnam are notable for their online auction model."
                       logo="/other project/chozoi.png"
                       link={{ label: "Platform", text: "Project Archived" }}
                     />
