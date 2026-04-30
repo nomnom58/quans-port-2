@@ -215,28 +215,26 @@ export default function HomeV2() {
               <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <section className="max-w-[800px] space-y-12 pb-32">
                   <h2 className="text-[20px] font-medium leading-[1.3] text-[#000000]">
-                    Senior Product Designer với tư duy thực thi. Tôi sử dụng AI để phá vỡ giới hạn giữa bản vẽ và sản phẩm thực tế.
+                    Senior Product Designer with an execution mindset. I use AI to break down the boundaries between blueprints and actual products.
                   </h2>
                   <div className="space-y-6 text-[20px] font-normal leading-[1.3] text-[#2A2A2A]">
                     <p>
-                      Chào bạn, tôi là Quân, một Senior Product Designer chuyên chuyển hóa những ý tưởng phức tạp thành sản phẩm thực tế.
-                      Thay vì những bản vẽ trên giấy, tôi chứng minh tư duy sản phẩm của mình qua việc vận hành Echoo (từ logic đến thực thi)
-                      và đang phát hành GoodMotion — thư viện GSAP dành cho người dùng Framer.
+                      Hi, I'm Quân, a Senior Product Designer specializing in transforming complex ideas into tangible products. Instead of blueprints on paper, I demonstrate my product thinking through the operation of Echoo (from logic to implementation) and I'm releasing GoodMotion — a GSAP library for Framer users.
                     </p>
                     <p>
-                      Với tôi, thiết kế đẹp chỉ là điều kiện cần, điều kiện đủ là khả năng thực thi kỹ thuật.
-                      Bạn có thể xem chi tiết cách tôi giải quyết vấn đề tại:
+                      For me, a beautiful design is only a necessary condition; the sufficient condition is the ability to technically execute it.
+                      You can see the details of how I solved the problem here:
                     </p>
                     <ul className="list-none space-y-4">
                       <li>
-                        • <span className="font-semibold underline cursor-pointer hover:opacity-70 transition-opacity">[Case Study Echoo]</span> – Tư duy sản phẩm & Vận hành.
+                        • <span className="font-semibold underline cursor-pointer hover:opacity-70 transition-opacity">[Case Study Echoo]</span> – Product thinking & Operations.
                       </li>
                       <li>
-                        • <span className="font-semibold underline cursor-pointer hover:opacity-70 transition-opacity">[GoodMotion]</span> – Kỹ thuật tương tác & Animation.
+                        • <span className="font-semibold underline cursor-pointer hover:opacity-70 transition-opacity">[GoodMotion]</span> – Interactive techniques & Animation.
                       </li>
                     </ul>
                     <p>
-                      Luôn sẵn sàng cho những thử thách sản phẩm tiếp theo.
+                      Always be prepared for the next product challenge.
                     </p>
                   </div>
 
