@@ -16,17 +16,15 @@ import TransitionWrapper from './components/pagetransition/TransitionWrapper';
 
 export default function App() {
   return (
-    <TransitionWrapper>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/v2" element={<HomeV2 />} />
-          <Route path="/showcase/echoo" element={<EchooShowcase />} />
-          <Route path="/showcase/echoo-v2" element={<EchooShowcaseV2 />} />
-          <Route path="/showcase/quans-portfolio" element={<QuansPortfolio />} />
-        </Routes>
-      </Router>
-    </TransitionWrapper>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomeV2 />} />
+        <Route path="/v1" element={<Home />} />
+        <Route path="/showcase/echoo" element={<EchooShowcase />} />
+        <Route path="/showcase/echoo-v2" element={<EchooShowcaseV2 />} />
+        <Route path="/showcase/quans-portfolio" element={<QuansPortfolio />} />
+      </Routes>
+    </Router>
   );
 }
 

@@ -175,6 +175,7 @@ const EchooShowcaseV2: React.FC = () => {
                         <li>Whisper: Algorithm easily diluted, high toxicity.</li>
                         <li>Echoo's Pivot: Disables comments to completely eliminate offensive language, only retaining reactions to acknowledge emotions.</li>
                       </ul>
+                      <img src="/showcase/echoo/Whisper.png" className="w-full h-auto mt-4 rounded-[12px] md:rounded-[16px]" alt="Whisper Audit" />
                     </div>
                   </ShowcaseToggleV2>
                 </div>

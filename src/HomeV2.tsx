@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Mail, Instagram, ArrowLeft, ArrowRight, Copy } from 'lucide-react';
 import MoneyTrail from './components/MoneyTrail';
 
@@ -129,11 +129,18 @@ export default function HomeV2() {
                     title="Echoo - An anonymous confession platform: Product thinking in practice – Design centered around privacy and trust."
                     videoSrc="/video/Echoo-nen.webm"
                     thumbnail="/video/Echoo-thumnail.png"
+                    url="/showcase/echoo-v2"
                   />
-                  <ProjectItem
+                  {/* <ProjectItem
                     title="GoodMotion - A platform for sharing GSAP libraries for Framer."
                     videoSrc="/video/Gsap.webm"
                     thumbnail="/video/GSAP-thumnail.png"
+                  /> */}
+                  <ProjectItem
+                    title="Quan's Portfolio: Custom-built high-performance portfolio using React + GSAP."
+                    videoSrc="/showcase/quan-portfolio/Port Video.webm"
+                    thumbnail="/showcase/quan-portfolio/port_thumnail.png"
+                    url="/showcase/quans-portfolio"
                   />
                 </section>
 
@@ -375,13 +382,15 @@ function Navigation({ activeTab, setActiveTab, isMobile }: { activeTab: string, 
   );
 }
 
-function ProjectItem({ title, description = "", videoSrc, thumbnail }: {
+function ProjectItem({ title, description = "", videoSrc, thumbnail, url }: {
   title: string,
   description?: string,
   videoSrc?: string,
-  thumbnail?: string
+  thumbnail?: string,
+  url?: string
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const video = videoRef.current;
@@ -410,7 +419,10 @@ function ProjectItem({ title, description = "", videoSrc, thumbnail }: {
   }, [videoSrc]);
 
   return (
-    <div className="group space-y-[12px]">
+    <div 
+      className={`group space-y-[12px] ${url ? 'cursor-pointer' : ''}`}
+      onClick={() => url && navigate(url)}
+    >
       <h3 className="text-[20px] font-normal leading-[1.3] text-[#000000]">
         {title}{description && ": "}<span className="text-[#7B7B7B]">{description}</span>
       </h3>
