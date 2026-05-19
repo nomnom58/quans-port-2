@@ -6,6 +6,7 @@ import EchooShowcase from './EchooShowcase';
 import EchooShowcaseV2 from './EchooShowcaseV2';
 import QuansPortfolio from './QuansPortfolio';
 import HomeV2 from './HomeV2';
+import GoodmotionShowcase from './GoodmotionShowcase';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/showcase/echoo" element={<EchooShowcase />} />
         <Route path="/showcase/echoo-v2" element={<EchooShowcaseV2 />} />
         <Route path="/showcase/quans-portfolio" element={<QuansPortfolio />} />
+        <Route path="/showcase/goodmotion" element={<GoodmotionShowcase />} />
       </Routes>
     </Router>
   );

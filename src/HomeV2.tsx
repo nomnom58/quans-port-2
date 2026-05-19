@@ -419,7 +419,7 @@ function ProjectItem({ title, description = "", videoSrc, thumbnail, url }: {
   }, [videoSrc]);
 
   return (
-    <div 
+    <div
       className={`group space-y-[12px] ${url ? 'cursor-pointer' : ''}`}
       onClick={() => url && navigate(url)}
     >
