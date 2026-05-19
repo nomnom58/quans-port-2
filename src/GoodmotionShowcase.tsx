@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Monitor, Github, Globe, Eye } from 'lucide-react';
 import ShowcaseNav from './components/ShowcaseNav';
-import TransitionWrapper from './components/pagetransition/TransitionWrapper';
 
 const ShowcaseButton: React.FC<{
   text: string;
@@ -57,24 +56,39 @@ const tocSections = [
 
 export default function GoodmotionShowcase() {
   const [activeSection, setActiveSection] = useState('overview');
+  const isClickingRef = useRef(false);
 
   const scrollToSection = (id: string) => {
+    setActiveSection(id);
+    isClickingRef.current = true;
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+    // Gỡ block sau khi scroll animation hoàn tất (~800ms)
+    setTimeout(() => {
+      isClickingRef.current = false;
+    }, 800);
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const handleScroll = () => {
+      if (isClickingRef.current) return;
+
       let current = '';
+      let bestTop = -Infinity;
+
       for (const section of tocSections) {
         const el = document.getElementById(section.id);
         if (el) {
           const rect = el.getBoundingClientRect();
-          // If the element's top is past the middle of the viewport
+          // Lấy section gần với giữa màn hình nhất
           if (rect.top <= window.innerHeight / 2) {
-            current = section.id;
+            if (rect.top > bestTop) {
+              bestTop = rect.top;
+              current = section.id;
+            }
           }
         }
       }
@@ -86,9 +100,8 @@ export default function GoodmotionShowcase() {
   }, []);
 
   return (
-    <TransitionWrapper>
-      <main className="min-h-screen text-[#1D1D1D] relative pb-32 font-medium" style={{ backgroundColor: '#F3F1E9' }}>
-        {/* NEW HERO SECTION */}
+    <main className="min-h-screen text-[#1D1D1D] relative pb-32 font-medium" style={{ backgroundColor: '#F3F1E9' }}>
+      {/* NEW HERO SECTION */}
         <section className="w-full pt-[100px] pb-20 flex flex-col items-center">
           <div className="mb-[160px]">
             <ShowcaseNav />
@@ -256,7 +269,7 @@ export default function GoodmotionShowcase() {
               <button
                 key={section.id}
                 onClick={() => scrollToSection(section.id)}
-                className={`px-[10px] py-[8px] rounded-[16px] text-[13px] font-medium transition-all duration-300 text-center leading-[1.2] whitespace-pre-line ${
+                className={`px-[10px] py-[8px] rounded-[16px] text-[14px] font-medium transition-all duration-300 text-center leading-[1.2] whitespace-pre-line ${
                   activeSection === section.id 
                     ? 'bg-white text-black shadow-sm' 
                     : 'text-gray-300 hover:text-white hover:bg-white/20'
@@ -268,16 +281,15 @@ export default function GoodmotionShowcase() {
           </nav>
         </div>
         
-        <style>{`
-          .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-          }
-          .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-          }
-        `}</style>
-      </main>
-    </TransitionWrapper>
+      <style>{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
+    </main>
   );
 }

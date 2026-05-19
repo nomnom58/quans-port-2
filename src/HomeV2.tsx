@@ -124,7 +124,13 @@ export default function HomeV2() {
             {/* TAB CONTENT: PROJECTS */}
             {activeTab === 'project' && (
               <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <section className="space-y-[24px]">
+                <section className="space-y-[32px]">
+                  <ProjectItem
+                    title="Goodmotion: GSAP Library cho Framer"
+                    videoSrc="/video/Goodmotion-Video3.webm"
+                    thumbnail="/video/GSAP-thumnail.png"
+                    url="/showcase/goodmotion"
+                  />
                   <ProjectItem
                     title="Echoo - An anonymous confession platform: Product thinking in practice – Design centered around privacy and trust."
                     videoSrc="/video/Echoo-nen.webm"
@@ -132,16 +138,11 @@ export default function HomeV2() {
                     url="/showcase/echoo-v2"
                   />
                   {/* <ProjectItem
-                    title="GoodMotion - A platform for sharing GSAP libraries for Framer."
-                    videoSrc="/video/Gsap.webm"
-                    thumbnail="/video/GSAP-thumnail.png"
-                  /> */}
-                  <ProjectItem
                     title="Quan's Portfolio: Custom-built high-performance portfolio using React + GSAP."
                     videoSrc="/showcase/quan-portfolio/Port Video.webm"
                     thumbnail="/showcase/quan-portfolio/port_thumnail.png"
                     url="/showcase/quans-portfolio"
-                  />
+                  /> */}
                 </section>
 
                 {/* OTHER PROJECTS section */}
