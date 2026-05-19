@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Monitor, Github } from 'lucide-react';
+import { Monitor, Github, Globe, Eye } from 'lucide-react';
 import ShowcaseNav from './components/ShowcaseNav';
 import TransitionWrapper from './components/pagetransition/TransitionWrapper';
 
@@ -111,7 +111,7 @@ export default function GoodmotionShowcase() {
                 text="Visit website" 
                 variant="primary"
                 icon={Monitor} 
-                onClick={() => window.open('https://goodmotion.example.com', '_blank')}
+                onClick={() => window.open('https://goodmotion.vercel.app/', '_blank')}
               />
               <ShowcaseButton 
                 text="View Github" 
@@ -170,6 +170,84 @@ export default function GoodmotionShowcase() {
             })}
           </div>
         </section>
+
+        {/* Footer Area */}
+        <div className="w-full px-[16px] md:w-[748px] md:max-w-[748px] md:px-0 mx-auto mt-24">
+          {/* Footer Divider */}
+          <div className="h-[1px] bg-[#D3D3D3] w-full" />
+
+          {/* CTA Footer Section */}
+          <section className="mt-12 flex flex-col items-start pb-12">
+            <h2 className="text-[20px] md:text-[24px] text-[#1D1D1D] font-medium">Now, discover Goodmotion for yourself</h2>
+            <p className="mt-2 text-[16px] md:text-[20px] leading-[22px] md:leading-[26px] text-[#575757] font-medium">
+              Huge thanks to Quan for sharing the story behind Goodmotion and the details on the building product. Now test it out yourself and see if it's a great fit for you.
+            </p>
+            <div className="mt-6 flex flex-row gap-4 items-center">
+              <button
+                onClick={() => window.open('https://goodmotion.vercel.app/', '_blank', 'noopener,noreferrer')}
+                className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-[#E9E6E0] border border-[#CAC5BD] rounded-[12px] md:rounded-[16px] transition-all hover:brightness-95 active:scale-95 text-[16px] md:text-[20px] font-[500] text-[#1D1D1D] leading-none w-fit"
+              >
+                <Monitor className="w-4 h-4 md:w-5 md:h-5 mr-2 text-[#1D1D1D] shrink-0" />
+                Visit website
+              </button>
+              <button
+                onClick={() => window.open('https://github.com/nomnom58/goodmotion', '_blank', 'noopener,noreferrer')}
+                className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-transparent border border-[#CAC5BD] rounded-[12px] md:rounded-[16px] transition-all hover:bg-black/5 active:scale-95 text-[16px] md:text-[20px] font-[500] text-[#1D1D1D] leading-none w-fit"
+              >
+                <Github className="w-4 h-4 md:w-5 md:h-5 mr-2 text-[#1D1D1D] shrink-0" />
+                View Github
+              </button>
+            </div>
+          </section>
+
+          {/* OTHER PROJECTS LINE STROKE */}
+          <div className="h-[1px] w-full bg-[#D3D3D3] my-12" />
+
+          {/* OTHER PROJECT SECTION */}
+          <section className="flex flex-col items-start pb-24">
+            <h2 className="text-[24px] md:text-[32px] text-[#0360FF] font-[500] pb-8">Other Project</h2>
+            <div className="w-full">
+              {/* Video Screenshot Project */}
+              <video
+                src="/goodmotion/Echoo-nen.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto rounded-2xl border-2 border-[#DAD6CF] mb-6 object-cover"
+              />
+              <h3 className="text-[20px] md:text-[24px] md:leading-[32px] text-[#1D1D1D] font-[500] pb-6">
+                Echoo - An anonymous confession platform: Designed around privacy and trust.
+              </h3>
+
+              <div className="flex flex-col md:flex-row gap-2 md:gap-4">
+                <button
+                  onClick={() => window.location.href = '/showcase/echoo-v2'}
+                  className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-white border border-[#CAC5BD] rounded-[12px] md:rounded-[16px] transition-all hover:bg-gray-50 active:scale-95 text-[16px] md:text-[20px] font-[500] text-[#1D1D1D] leading-none w-full md:w-fit"
+                >
+                  <Eye className="w-4 h-4 md:w-5 md:h-5 mr-2 text-[#1D1D1D] shrink-0" />
+                  Read showcase
+                </button>
+                <div className="grid grid-cols-2 md:flex md:gap-4 gap-2">
+                  <button
+                    onClick={() => window.open('https://www.myechoo.xyz/', '_blank', 'noopener,noreferrer')}
+                    className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-white border border-[#CAC5BD] rounded-[12px] md:rounded-[16px] transition-all hover:bg-gray-50 active:scale-95 text-[16px] md:text-[20px] font-[500] text-[#1D1D1D] leading-none w-full md:w-fit"
+                  >
+                    <Globe className="w-4 h-4 md:w-5 md:h-5 mr-2 text-[#1D1D1D] shrink-0" />
+                    Visit Website
+                  </button>
+                  <button
+                    onClick={() => window.open('https://github.com/nomnom58/untold', '_blank', 'noopener,noreferrer')}
+                    className="inline-flex items-center justify-center px-3 py-[7px] md:py-2.5 bg-white border border-[#CAC5BD] rounded-[12px] md:rounded-[16px] transition-all hover:bg-gray-50 active:scale-95 text-[16px] md:text-[20px] font-[500] text-[#1D1D1D] leading-none w-full md:w-fit"
+                  >
+                    <Github className="w-4 h-4 md:w-5 md:h-5 mr-2 text-[#1D1D1D] shrink-0" />
+                    View Github
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
 
         {/* Sticky TOC Navigation at Bottom (Desktop Only) */}
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 hidden lg:block overflow-x-auto hide-scrollbar">
