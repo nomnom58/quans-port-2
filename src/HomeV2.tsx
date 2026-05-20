@@ -68,7 +68,7 @@ export default function HomeV2() {
             email={email}
             showMailTooltip={showMailTooltip}
             handleCopyMail={handleCopyMail}
-            cvUrl="https://drive.google.com/drive/u/0/folders/0ByKnjKg49xuZQVFEOFZiYmhyN2c?resourcekey=0-GL2DY6N06GwWT3AHFq9Lpg"
+            cvUrl="https://drive.google.com/file/d/1UrcnKO5Qe_7vBeqQxD1cpfHXFp8jheg1/view?usp=sharing"
           />
         </header>
 
@@ -117,7 +117,7 @@ export default function HomeV2() {
                 email={email}
                 showMailTooltip={showMailTooltip}
                 handleCopyMail={handleCopyMail}
-                cvUrl="https://drive.google.com/drive/u/0/folders/0ByKnjKg49xuZQVFEOFZiYmhyN2c?resourcekey=0-GL2DY6N06GwWT3AHFq9Lpg"
+                cvUrl="https://drive.google.com/file/d/1UrcnKO5Qe_7vBeqQxD1cpfHXFp8jheg1/view?usp=sharing"
               />
             </nav>
 
@@ -249,7 +249,7 @@ export default function HomeV2() {
                   <div className="flex flex-wrap items-center gap-2">
                     {/* View my CV button */}
                     <a
-                      href="https://drive.google.com/drive/u/0/folders/0ByKnjKg49xuZQVFEOFZiYmhyN2c?resourcekey=0-GL2DY6N06GwWT3AHFq9Lpg"
+                      href="https://drive.google.com/file/d/1UrcnKO5Qe_7vBeqQxD1cpfHXFp8jheg1/view?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-[12px] py-[7px] bg-[#005EFF] text-white rounded-[14px] text-[16px] font-medium hover:opacity-80 transition-all h-[38px] flex items-center"
