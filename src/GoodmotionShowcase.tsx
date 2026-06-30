@@ -25,6 +25,7 @@ const ShowcaseButton: React.FC<{
 
 const images = [
   "1 banner.png",
+  "1.5 Metric.png",
   "2 content.png",
   "3 overview.png",
   "4 phase1 define problem.png",
@@ -46,12 +47,12 @@ const images = [
 // Mapping TOC items to an approximate index in the images array
 const tocSections = [
   { id: 'overview', label: 'Overview', imageIndex: 0 },
-  { id: 'define-problem', label: 'Define\nProblem', imageIndex: 3 },
-  { id: 'validate-assumption', label: 'Validate\nAssumption', imageIndex: 6 },
-  { id: 'design-strategy', label: 'Design &\nProduct Strategy', imageIndex: 7 },
-  { id: 'metric-optimization', label: 'Metric &\nOptimization', imageIndex: 10 },
-  { id: 'tech-stack', label: 'Tech\nStack', imageIndex: 14 },
-  { id: 'design-process', label: 'Design Process\nLearning', imageIndex: 15 }
+  { id: 'define-problem', label: 'Define\nProblem', imageIndex: 4 },
+  { id: 'validate-assumption', label: 'Validate\nAssumption', imageIndex: 7 },
+  { id: 'design-strategy', label: 'Design &\nProduct Strategy', imageIndex: 8 },
+  { id: 'metric-optimization', label: 'Metric &\nOptimization', imageIndex: 11 },
+  { id: 'tech-stack', label: 'Tech\nStack', imageIndex: 15 },
+  { id: 'design-process', label: 'Design Process\nLearning', imageIndex: 16 }
 ];
 
 export default function GoodmotionShowcase() {
